@@ -8,7 +8,7 @@ class FeedbackController < ApplicationController
 		@feedback = Feedback.new
 		session[:app] = params[:app]
 		session[:username] = params[:username]
-		# puts params.inspect
+		#puts params.inspect
 
 	end
 
@@ -26,8 +26,8 @@ class FeedbackController < ApplicationController
 	end
 
 	private
-  		def feedback_params
-    		params.require(:feedback).permit(:feedback).merge(application: session[:app]).merge(username: session[:username])
-  		end
+  	def feedback_params
+   		params.require(:feedback).permit(:feedback).merge(application: session[:app]).merge(username: session[:username])
+ 		end
 
 end
