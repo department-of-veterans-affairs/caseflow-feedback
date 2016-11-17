@@ -1,11 +1,15 @@
 class FeedbackController < ApplicationController
   def new
     if Rails.env.development? || Rails.env.test?
-      params[:app] = "caseflow"
-      params[:username] = "ndjuric"
+      params[:username] = params[:username] || "ANNE_MERICA"
     end
     @feedback = Feedback.new
-    session[:app] = params[:app]
+    # If the query param is missing, for instance
+    # if the user went straight to the feedback URL,
+    # we'll collect feedback for "Caseflow" in general.
+    session[:app] = params[:app] || "Caseflow"
+    # TODO(alex): harvest username from session rather than
+    # query param.
     session[:username] = params[:username]
   end
 
