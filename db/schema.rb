@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20161116154114) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "feedback", force: :cascade do |t|
     t.string   "application"
     t.string   "username"
