@@ -7,11 +7,9 @@ class FeedbackController < ApplicationController
     @feedback = Feedback.new
     session[:app] = params[:app]
     session[:username] = params[:username]
-    # puts params.inspect
   end
 
   def create
-    # puts feedback_params
     @feedback = Feedback.new(feedback_params)
     if @feedback.save
       render "success"
