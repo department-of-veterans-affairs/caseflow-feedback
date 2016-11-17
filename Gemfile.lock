@@ -153,6 +153,7 @@ GEM
       shellany (~> 0.0)
     parser (2.3.1.4)
       ast (~> 2.2)
+    pg (0.18.4)
     poltergeist (1.11.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -300,6 +301,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jshint
+  pg
   puma (~> 2.16.0)
   rails (= 4.2.7.1)
   rainbow
