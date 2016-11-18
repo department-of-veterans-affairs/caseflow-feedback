@@ -32,6 +32,12 @@ gem "puma", "~> 2.16.0"
 
 gem 'pg', platforms: :ruby
 
+group :production, :staging do
+  # Oracle DB
+  gem 'activerecord-oracle_enhanced-adapter'
+  gem 'ruby-oci8'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: :ruby
