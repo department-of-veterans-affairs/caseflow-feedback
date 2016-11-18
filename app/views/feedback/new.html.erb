@@ -14,14 +14,14 @@
       </div>
     <% end %>
     <div>
-      <h1>Tell us about your experience with Caseflow Certification. </h1>
-      <div> What's working well? What's not working? Your comments will help us improve Caseflow for everyone.</div>
+      <h2>Tell us about your experience with Caseflow Certification. </h2>
+      <p> What's working well? What's not working? Your comments will help us improve Caseflow for everyone.</p>
     </div>
     <div>
       <%= f.text_area :feedback, "aria-label": "Feedback" %>
     </div>
   </div>
-  <div>
-    <%= f.submit "Send Feedback" %>
+  <div class="cf-app-segment">
+    <%= f.submit "Send Feedback", class: "cf-push-right cf-submit" %>
   </div>
 <% end %>
