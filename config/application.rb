@@ -22,8 +22,14 @@ module CaseflowFeedback
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    
+
     # Gzip files when possible
     config.middleware.use Rack::Deflater
+
+    #HCaseflow application urls
+    config.app_urls = {"Caseflow" => "https://caseflow.ds.va.gov", "Efolder" => "https://efolder.cf.ds.va.gov"}
+
+    #Caseflow application official names
+    config.app_names = {"Caseflow" => "Caseflow Certification", "Efolder"=> "EFolder"}
   end
 end

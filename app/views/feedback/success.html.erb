@@ -4,7 +4,9 @@
     <p> Your feedback has been recorded. We appreciate your comments! <a href="/"> Send in more feedback</a> at any time. </p>
   </div>
   <div class="cf-app-segment">
-    <button class="cf-submit cf-push-right">Back to Certification</button>
+    <a href='<%= Rails.configuration.app_urls[session[:app]] %>'>
+      <button class="cf-submit cf-push-right" >Back to <%= Rails.configuration.app_names[session[:app]] %></button>
+   </a>
   </div>
 </div>
 
