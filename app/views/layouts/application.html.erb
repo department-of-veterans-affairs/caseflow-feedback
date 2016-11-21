@@ -16,6 +16,20 @@
           <h1 class="cf-logo"><span class="cf-logo-image"></span>Caseflow</h1>
         </a>
         <h2 id="page-title" class="cf-application-title">Feedback</h2>
+
+        <% unless current_user.nil? %>
+          <div class="cf-dropdown cf-nav-dropdown">
+            <a href="#menu" class="cf-dropdown-trigger" id="menu-trigger">
+              <%= current_user.display_name %>
+            </a>
+
+            <ul id="menu" class="cf-dropdown-menu" aria-labelledby="menu-trigger">
+              <li>
+                <a href="<%= url_for controller: 'sessions', action: 'destroy'%>">Sign out</a>
+              </li>
+            </ul>
+          </div>
+        <% end %>
       </div>
     </nav>
   </header>
