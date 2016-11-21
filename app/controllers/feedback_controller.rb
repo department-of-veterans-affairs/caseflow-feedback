@@ -7,7 +7,7 @@ class FeedbackController < ApplicationController
     # If the query param is missing, for instance
     # if the user went straight to the feedback URL,
     # we'll collect feedback for "Caseflow" in general.
-    session[:app] = params[:app] || "Caseflow"
+    session[:app] = params[:app] || "caseflow"
     # TODO(alex): harvest username from session rather than
     # query param.
     session[:username] = params[:username]
