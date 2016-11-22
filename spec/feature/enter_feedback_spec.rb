@@ -6,7 +6,7 @@ RSpec.feature "Enter feedback" do
     visit "/feedback/new"
     expect(page).to have_content("Tell us about your experience with Caseflow Certification")
     expect(page).to have_css("#feedback_feedback")
-    page.should have_link("Cancel", href: "https://caseflow.ds.va.gov")
+    page.should have_button("Cancel")
     fill_in "feedback_feedback", with: "Feedback"
     click_on "Send Feedback"
     expect(page).to have_content("Thanks for your feedback!")
