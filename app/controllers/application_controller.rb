@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :setup_fakes
 
   def setup_fakes
-    Fakes::Initializer.development! if Rails.env.development?
+    Fakes::Initializer.development! if (Rails.env.development? || Rails.env.test?)
   end
 
   def current_user
