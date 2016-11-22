@@ -122,7 +122,7 @@ class User
       new(css_id: user["id"],
           station_id: user["station_id"],
           roles: user["roles"],
-          regional_office: user["regional_office"])
+          regional_office: user["regional_office"] || session[:regional_office])
     end
 
     def authentication_service
