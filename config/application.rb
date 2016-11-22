@@ -29,5 +29,11 @@ module CaseflowFeedback
 
     # Gzip files when possible
     config.middleware.use Rack::Deflater
+
+    #HCaseflow application urls
+    config.app_urls = {"caseflow" => "https://caseflow.ds.va.gov", "efolder" => "https://efolder.cf.ds.va.gov"}
+
+    #Caseflow application official names
+    config.app_names = {"caseflow" => "Caseflow Certification", "efolder"=> "eFolder Express"}
   end
 end
