@@ -7,7 +7,7 @@ class FeedbackController < ApplicationController
     # If the query param is missing, for instance
     # if the user went straight to the feedback URL,
     # we'll collect feedback for "Caseflow" in general.
-    session[:app] = params[:app] || "caseflow"
+    session[:app_url] = params[:app_url] || "https://caseflow.ds.va.gov/certifications/123C/new"
     # TODO(alex): harvest username from session rather than
     # query param.
     session[:username] = params[:username]
@@ -28,6 +28,6 @@ class FeedbackController < ApplicationController
   private
 
   def feedback_params
-    params.require(:feedback).permit(:feedback).merge(application: session[:app]).merge(username: session[:username])
+    params.require(:feedback).permit(:feedback).merge(application: session[:app_url]).merge(username: session[:username])
   end
 end
