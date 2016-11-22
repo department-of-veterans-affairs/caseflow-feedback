@@ -22,11 +22,7 @@
             <a href="#menu" class="cf-dropdown-trigger" id="menu-trigger">
               <%= current_user.display_name %>
             </a>
-
             <ul id="menu" class="cf-dropdown-menu" aria-labelledby="menu-trigger">
-              <li>
-                <a href="<%= url_for controller: 'sessions', action: 'destroy'%>">Sign out</a>
-              </li>
             </ul>
           </div>
         <% end %>
