@@ -9,6 +9,10 @@ development:
   username: <%= `whoami` %>
   database: caseflow_feedback_development
 
+demo:
+  <<: *default
+  url: <%= ENV["POSTGRES_URL"] %>
+
 test:
   <<: *default
   username: <%= `whoami` %>

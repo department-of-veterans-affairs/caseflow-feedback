@@ -22,9 +22,8 @@
     </div>
   </div>
   <div class="cf-app-segment">
-    <a href='<%= app_display_url %>'>
-      <input type="button" value="Cancel" class="cf-push-left cf-submit">
-   </a>
+
+      <input type="button" value="Cancel" class="cf-push-left cf-submit" onclick="window.location='<%= app_display_url %>';">
     <%= f.submit "Send Feedback", class: "cf-push-right cf-submit" %>
   </div>
 <% end %>
