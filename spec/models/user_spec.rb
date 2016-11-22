@@ -5,34 +5,15 @@ describe User do
   let(:user) { User.from_session(session) }
   before { Fakes::AuthenticationService.user_session = nil }
 
-  context "#regional_office" do
-    context "when RO can't be determined using station_id" do
-      subject { user.regional_office }
-      before { session["user"]["station_id"] = "405" }
-      it { is_expected.to be_nil }
-    end
-
-    context "when RO can be determined using station_id" do
-      subject { user.regional_office }
-      before { session["user"]["station_id"] = "301" }
-      it { is_expected.to eq("RO01") }
-    end
-  end
-
   context "#display_name" do
     subject { user.display_name }
 
-    context "when username and RO are both set" do
+    context "when username and station id are both set" do
       before do
         session["user"]["id"] = "Shaner"
-        user.regional_office = "RO77"
+        user.station_id = "7"
       end
-      it { is_expected.to eq("Shaner (RO77)") }
-    end
-
-    context "when just username is set" do
-      before { session["user"]["id"] = "Shaner" }
-      it { is_expected.to eq("Shaner") }
+      it { is_expected.to eq("Shaner (7)") }
     end
   end
 
@@ -59,57 +40,14 @@ describe User do
     subject { user.authenticated? }
     before { session[:username] = "USER" }
 
-    context "when regional_office set" do
-      before { user.regional_office = "RO77" }
+    context "when station_id set" do
+      before { user.station_id = "7" }
       it { is_expected.to be_truthy }
     end
 
-    context "when regional_office isn't set" do
-      before { user.regional_office = nil }
+    context "when station_id isn't set" do
+      before { user.station_id = nil }
       it { is_expected.to be_falsy }
-    end
-  end
-
-  context "#authenticate" do
-    subject { user.authenticate(regional_office: "rO21", password: password) }
-    before do
-      Fakes::AuthenticationService.vacols_regional_offices = {
-        "RO21" => "pinkpowerranger" }
-    end
-
-    context "when user enters lowercase RO" do
-      let(:password) { "pinkpowerranger" }
-
-      it "sets regional_office in the session" do
-        is_expected.to be_truthy
-        expect(user.regional_office).to eq("RO21")
-      end
-    end
-  end
-
-  context "#authenticate" do
-    subject { user.authenticate(regional_office: "RO21", password: password) }
-    before do
-      Fakes::AuthenticationService.vacols_regional_offices = {
-        "RO21" => "pinkpowerranger" }
-    end
-
-    context "when vacols authentication passes" do
-      let(:password) { "pinkpowerranger" }
-
-      it "sets regional_office in the session" do
-        is_expected.to be_truthy
-        expect(user.regional_office).to eq("RO21")
-      end
-    end
-
-    context "when vacols authentication fails" do
-      let(:password) { "redpowerranger" }
-
-      it "doesn't set regional_office in the session" do
-        is_expected.to be_falsey
-        expect(user.regional_office).to be_nil
-      end
     end
   end
 
