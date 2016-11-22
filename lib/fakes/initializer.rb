@@ -8,7 +8,7 @@ class Fakes::Initializer
 
     User.authentication_service.user_session = {
       "id" => "ANNE MERICA",
-      "roles" => ["Certify Appeal", "Establish Claim", "Manage Claim Establishment", "Feedback Admin"],
+      "roles" => ["Certify Appeal", "Establish Claim", "Manage Claim Establishment"],
       "station_id" => "283"
     }
   end

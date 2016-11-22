@@ -17,7 +17,13 @@ class ApplicationController < ActionController::Base
     return true if current_user && current_user.authenticated?
 
     session["return_to"] = request.original_url
-    redirect_to login_path
+    # TODO: (alex) set up the sessions controller so users are prompted
+    # to go to the login page.
+    redirect_to "/unauthorized"
+  end
+
+  def unauthorized
+    render status: 403
   end
 
   helper_method :current_user
