@@ -1,21 +1,18 @@
-class Fakes::AuthenticationService
-  cattr_accessor :user_session
-  cattr_accessor :vacols_regional_offices
-
+class AuthenticationService
   def self.default_user_session
-    user_session
+    nil
   end
 
   def self.authenticate_vacols(regional_office, password)
-    normalized_ro = find_ro(regional_office)
-    actual_password = vacols_regional_offices[normalized_ro]
-    actual_password == password
-  end
+    db = Rails.application.config.database_configuration["#{Rails.env}_vacols"]
 
-  def self.find_ro(regional_office)
-    # case-insensitive compare on all the keys
-    vacols_regional_offices.keys.find do |known_ro|
-      known_ro.casecmp(regional_office) == 0
+    begin
+      oci = OCI8.new(regional_office, password, "#{db['host']}:#{db['port']}/#{db['database']}")
+    rescue OCIError
+      return false
     end
+
+    oci.logoff
+    true
   end
 end
