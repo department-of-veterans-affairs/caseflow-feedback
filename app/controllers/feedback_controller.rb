@@ -28,6 +28,7 @@ class FeedbackController < ApplicationController
   private
 
   def feedback_params
-    params.require(:feedback).permit(:feedback).merge(application: session[:app_url]).merge(username: session[:username])
+    params.require(:feedback).permit(:feedback).merge(application: session[:app_url])
+          .merge(username: session[:username])
   end
 end
