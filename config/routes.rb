@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   root 'feedback#new'
 
-  get "health-check", to: "health_checks#show"
+  get "unauthorized" => "application#unauthorized"
+  get "health-check" => "health_checks#show"
 
 end
