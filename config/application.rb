@@ -27,6 +27,6 @@ module CaseflowFeedback
     config.middleware.use Rack::Deflater
 
     #Caseflow application official names based on domain name
-    config.app_names = {"caseflow.ds.va.gov" => "Caseflow Certification", "efolder.cf.ds.va.gov"=> "eFolder Express"}
+    config.app_names = {"www.va.gov" => "Caseflow Certification", "efolder.cf.ds.va.gov"=> "eFolder Express"}
   end
 end

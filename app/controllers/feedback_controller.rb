@@ -7,7 +7,7 @@ class FeedbackController < ApplicationController
     # If the query param is missing, for instance
     # if the user went straight to the feedback URL,
     # we'll collect feedback for "Caseflow" in general.
-    session[:app_url] = params[:app_url] || "https://caseflow.ds.va.gov/certifications/123C/new"
+    session[:app_url] = params[:app_url] || "https://www.va.gov"
     # TODO(alex): harvest username from session rather than
     # query param.
     session[:username] = params[:username]
