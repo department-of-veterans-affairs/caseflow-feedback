@@ -1,9 +1,12 @@
 module FeedbackHelper
   def app_display_name
-    Rails.configuration.app_names[session[:app]]
+    # Extracts domain name from entire url
+    app_domain = Addressable::URI.parse(session[:redirect]).host
+    # Finds application name based on domain
+    Rails.configuration.app_names[app_domain]
   end
 
   def app_display_url
-    Rails.configuration.app_urls[session[:app]]
+    session[:redirect]
   end
 end
