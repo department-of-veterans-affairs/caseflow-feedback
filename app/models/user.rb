@@ -26,8 +26,6 @@ class User
     !station_id.blank?
   end
 
-  private
-
   class << self
     attr_writer :authentication_service
 
