@@ -1,4 +1,11 @@
 class FeedbackController < ApplicationController
+
+  before_action :verify_access, :except => [:new, :create]
+
+  def admin
+    @feedback = Feedback.all
+  end
+
   def new
     if Rails.env.development? || Rails.env.test?
       params[:username] = params[:username] || "ANNE_MERICA"
@@ -22,10 +29,12 @@ class FeedbackController < ApplicationController
     end
   end
 
-  def success
-  end
-
   private
+
+  def verify_access
+    #Passed string is irrelevant here, since can? methond always returns true for "System Admin" in user.rb
+    verify_authorized_roles("System Admin")
+  end
 
   def feedback_params
     params.require(:feedback).permit(:feedback).merge(application: session[:redirect])

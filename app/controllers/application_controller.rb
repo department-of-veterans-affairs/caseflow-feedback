@@ -9,9 +9,6 @@ class ApplicationController < ActionController::Base
     Fakes::Initializer.development!
   end
 
-  def current_user
-    @current_user ||= User.from_session(session)
-  end
 
   # TODO: (alex) uncomment once we use this to protect routes. rubocop doesn't likt it.
   # def verify_authentication
@@ -23,9 +20,21 @@ class ApplicationController < ActionController::Base
   #   redirect_to "/unauthorized"
   # end
 
-  # def unauthorized
-  #   render status: 403
-  # end
+  def unauthorized
+    render status: 403
+  end
+
+  private
+
+  def verify_authorized_roles(*roles)
+    return true if current_user && roles.all? { |r| current_user.can?(r) }
+    session["return_to"] = request.original_url
+    redirect_to "/unauthorized"
+  end
+
+  def current_user
+    @current_user ||= User.from_session(session)
+  end
 
   helper_method :current_user
 end

@@ -1,0 +1,28 @@
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Status</th>
+      <th>Feedback</th>
+      <th>Date</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @feedback.each do |feedback| %>
+      <tr>
+        <td><%= feedback.username %></td>
+        <td><%= feedback.status %></td>
+        <td><%= feedback.feedback %></td>
+        <td><%= feedback.created_at %></td>
+        <td>
+          <% unless feedback.admin_note.nil? %>
+            <%= feedback.admin_note %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
