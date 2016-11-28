@@ -19,6 +19,11 @@
     </div>
     <div>
       <%= f.text_area :feedback, "aria-label": "Feedback" %>
+
+      <div class="cf-form-cond-req">
+        <%= f.label :contact_email %>
+        <%= f.text_field :contact_email %>
+      </div>
     </div>
   </div>
   <div class="cf-app-segment">
