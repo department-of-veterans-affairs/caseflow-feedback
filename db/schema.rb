@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20161128153630) do
     t.text     "feedback"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.text     "note"
+    t.text     "admin_note"
     t.integer  "status",      default: 0
   end
 
