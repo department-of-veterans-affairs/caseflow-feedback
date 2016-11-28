@@ -8,7 +8,7 @@ RSpec.feature "Enter feedback" do
     expect(page).to have_css("#feedback_feedback")
     page.should have_link("Cancel")
     fill_in "feedback_feedback", with: "Feedback"
-    fill_in "feedback_contact_email", with: "k@va.gov"
+    fill_in "feedback_contact_email", with: "fk@va.gov"
     click_on "Send Feedback"
     expect(page).to have_content("Thanks for your feedback!")
     expect(page).to have_content("Back to Caseflow Certification")
