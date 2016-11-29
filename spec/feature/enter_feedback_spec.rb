@@ -18,9 +18,4 @@ RSpec.feature "Enter feedback" do
     expect(page).to have_content("Thanks for your feedback!")
     page.should have_link("Back to Caseflow Certification", href: "https://www.va.gov")
   end
-
-  scenario "Visit Admin page" do
-    visit "/admin"
-    expect(page).to have_content("Unauthorized")
-  end
 end
