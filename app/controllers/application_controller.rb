@@ -4,12 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :setup_fakes
 
-  def setup_fakes
-    return unless Rails.env.development? || Rails.env.test? || Rails.env.demo?
-    Fakes::Initializer.development!
-  end
-
-
   # TODO: (alex) uncomment once we use this to protect routes. rubocop doesn't likt it.
   # def verify_authentication
   #   return true if current_user && current_user.authenticated?
@@ -25,6 +19,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def setup_fakes
+    return unless Rails.env.development? || Rails.env.test? || Rails.env.demo?
+    Fakes::Initializer.development!
+  end
 
   def verify_authorized_roles(*roles)
     return true if current_user && roles.all? { |r| current_user.can?(r) }

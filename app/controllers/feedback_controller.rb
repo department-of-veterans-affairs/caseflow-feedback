@@ -1,6 +1,5 @@
 class FeedbackController < ApplicationController
-
-  before_action :verify_access, :except => [:new, :create]
+  before_action :verify_access, except: [:new, :create]
 
   def admin
     @feedback = Feedback.all
@@ -32,7 +31,7 @@ class FeedbackController < ApplicationController
   private
 
   def verify_access
-    #Passed string is irrelevant here, since can? methond always returns true for "System Admin" in user.rb
+    # Passed string is irrelevant here, since can? methond always returns true for "System Admin" in user.rb
     verify_authorized_roles("System Admin")
   end
 
