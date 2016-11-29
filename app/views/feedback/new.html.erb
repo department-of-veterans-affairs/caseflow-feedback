@@ -19,11 +19,15 @@
     </div>
     <div>
       <%= f.text_area :feedback, "aria-label": "Feedback" %>
+
+    <div class="cf-form-cond-req">
+        <%= f.label :contact_email %>
+        <%= f.text_field :contact_email %>
     </div>
   </div>
-  <div class="cf-app-segment">
-
-      <input type="button" value="Cancel" class="cf-push-left cf-submit" onclick="window.location='<%= app_display_url %>';">
-    <%= f.submit "Send Feedback", class: "cf-push-right cf-submit" %>
-  </div>
+</div>
+<div class="cf-app-segment">
+  <a class="cf-push-left cf-submit" href="<%= app_display_url %>">Cancel</a>
+  <%= f.submit "Send Feedback", class: "cf-push-right cf-submit" %>
+</div>
 <% end %>
