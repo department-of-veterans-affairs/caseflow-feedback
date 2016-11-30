@@ -1,4 +1,4 @@
-    <div class="usa-grid-full">
+    <div class="cf-app-msg-screen cf-app-segment cf-app-segment--alt">
       <table class="usa-table-borderless" summary="Each row represents a feedback">
       <caption hidden>This table shows all feedback submitted.</caption>
       <thead>
@@ -13,7 +13,11 @@
       <tbody>
         <% @feedback.each do |feedback| %>
           <tr>
-            <td><%= feedback.username %></td>
+            <% if feedback.contact_email.blank? %>
+              <td><%= feedback.username %></td>
+            <% else %>
+              <td><%= feedback.contact_email %></td>
+            <% end %>
             <td><%= feedback.created_at.strftime("%m/%d/%Y") %></td>
             <td><%= feedback.application %></td>
             <td><%= feedback.feedback %></td>
