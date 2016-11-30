@@ -30,12 +30,22 @@ RSpec.feature "Admin Page " do
     fill_in "feedback_contact_email", with: "fk@va.gov"
     click_on "Send Feedback"
     expect(page).to have_content("Thanks for your feedback!")
+    click_on "Send in more feedback"
+    expect(page).to have_content("Tell us about your experience with Caseflow Certification")
+    fill_in "feedback_feedback", with: "Feedback Posting Test 2"
+    #leave contact email field empty
+    click_on "Send Feedback"
+    expect(page).to have_content("Thanks for your feedback!")
     User.authenticate!(roles: ["System Admin"])
     visit "/admin"
     expect(page).to have_content("fk@va.gov")
     expect(page).to have_content(Date.current.strftime("%m/%d/%Y"))
     expect(page).to have_content("Caseflow Certification")
     expect(page).to have_content("Feedback Posting Test")
+    expect(page).to have_content("ANNE MERICA (283)")
+    expect(page).to have_content("Caseflow Certification")
+    expect(page).to have_content("Feedback Posting Test 2")
+
   end
 
 end
