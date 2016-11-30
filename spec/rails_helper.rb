@@ -29,7 +29,59 @@ require "rspec/rails"
 require "capybara"
 Capybara.default_driver = :sniffybara
 
+# Convenience methods for stubbing current user
+module StubbableUser
+  module ClassMethods
+    def clear_stub!
+      @stub = nil
+    end
+
+    def stub=(user)
+      @stub = user
+    end
+
+    def authenticate!(roles: nil)
+      self.stub = User.from_session(
+        "user" => {
+          "id" => "DSUSER",
+          "station_id" => "283",
+          "roles" => roles || ["Certify Appeal"]
+        })
+    end
+
+    def current_user
+      @stub
+    end
+
+    def unauthenticate!
+      self.stub = nil
+    end
+
+    def from_session(session)
+      @stub || super(session)
+    end
+  end
+
+  def self.prepended(base)
+    class << base
+      prepend ClassMethods
+    end
+  end
+end
+
+User.prepend(StubbableUser)
+
+def reset_application!
+  User.clear_stub!
+end
+
+def current_user
+  User.current_user
+end
+
 RSpec.configure do |config|
+  config.before(:all) { User.unauthenticate! }
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

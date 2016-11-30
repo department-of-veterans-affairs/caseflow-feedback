@@ -1,0 +1,31 @@
+    <div class="usa-grid-full">
+      <table class="usa-table-borderless" summary="Each row represents a feedback">
+      <caption hidden>This table shows all feedback submitted.</caption>
+      <thead>
+        <tr>
+         <th scope="col"><h3>User</h3></th>
+        <th scope="col"><h3>Date</h3></th>
+        <th scope="col"><h3>Application</h3></th>
+        <th scope="col"><h3>Feedback</h3></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @feedback.each do |feedback| %>
+          <tr>
+            <td><%= feedback.username %></td>
+            <td><%= feedback.created_at.strftime("%m/%d/%Y") %></td>
+            <td><%= feedback.application %></td>
+            <td><%= feedback.feedback %></td>
+            <td>
+              <% unless feedback.admin_note.nil? %>
+                <%= feedback.admin_note %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+      </table>
+    </div>
+
+
