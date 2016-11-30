@@ -14,11 +14,28 @@ RSpec.feature "Admin Page " do
   scenario "User who is admin" do
     User.authenticate!(roles: ["System Admin"])
     visit "/admin"
-    puts User.current_user.roles
     expect(page).to have_content("User")
     expect(page).to have_content("Date")
     expect(page).to have_content("Application")
     expect(page).to have_content("Feedback")
     expect(page).to have_no_content("Unauthorized")
   end
+
+  scenario "Post feedback and make sure it shows on Feedback View" do
+    visit "/feedback/new"
+    expect(page).to have_content("Tell us about your experience with Caseflow Certification")
+    expect(page).to have_css("#feedback_feedback")
+    page.should have_link("Cancel")
+    fill_in "feedback_feedback", with: "Feedback Posting Test"
+    fill_in "feedback_contact_email", with: "fk@va.gov"
+    click_on "Send Feedback"
+    expect(page).to have_content("Thanks for your feedback!")
+    User.authenticate!(roles: ["System Admin"])
+    visit "/admin"
+    expect(page).to have_content("fk@va.gov")
+    expect(page).to have_content(Date.current.strftime("%m/%d/%Y"))
+    expect(page).to have_content("Caseflow Certification")
+    expect(page).to have_content("Feedback Posting Test")
+  end
+
 end
