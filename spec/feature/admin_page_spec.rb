@@ -33,7 +33,7 @@ RSpec.feature "Admin Page " do
     click_on "Send in more feedback"
     expect(page).to have_content("Tell us about your experience with Caseflow Certification")
     fill_in "feedback_feedback", with: "Feedback Posting Test 2"
-    #leave contact email field empty
+    # leave contact email field empty
     click_on "Send Feedback"
     expect(page).to have_content("Thanks for your feedback!")
     User.authenticate!(roles: ["System Admin"])
@@ -45,7 +45,5 @@ RSpec.feature "Admin Page " do
     expect(page).to have_content("ANNE MERICA (283)")
     expect(page).to have_content("Caseflow Certification")
     expect(page).to have_content("Feedback Posting Test 2")
-
   end
-
 end
