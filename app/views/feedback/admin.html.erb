@@ -19,7 +19,7 @@
               <td class="align-top"><%= feedback.contact_email %></td>
             <% end %>
             <td class="align-top"><%= feedback.created_at.strftime("%m/%d/%Y") %></td>
-            <td class="align-top"><%= feedback.application %></td>
+            <td class="align-top"><%= feedback.subject %></td>
             <td class="align-top"><%= feedback.feedback %></td>
             <td class="align-top">
               <% unless feedback.admin_note.nil? %>

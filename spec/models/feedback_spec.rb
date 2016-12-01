@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Feedback, type: :model do
-  let(:feedback) { { application: "eFolder Express", username: "alf", feedback: "gr8 app" } }
+  let(:feedback) { { subject: "eFolder Express", username: "alf", feedback: "gr8 app" } }
 
   after do
     Feedback.delete_all

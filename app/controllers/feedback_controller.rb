@@ -9,6 +9,7 @@ class FeedbackController < ApplicationController
 
   def new
     @feedback = Feedback.new
+    session[:subject] = params[:subject] || "Caseflow"
     session[:redirect] = params[:redirect] || "https://www.va.gov"
   end
 
@@ -32,6 +33,6 @@ class FeedbackController < ApplicationController
   def feedback_params
     params.require(:feedback)
           .permit(:feedback, :contact_email)
-          .merge(application: app_display_name, username: current_user.display_name)
+          .merge(subject: session[:subject], username: current_user.display_name)
   end
 end

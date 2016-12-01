@@ -1,5 +1,5 @@
 class Feedback < ActiveRecord::Base
-  validates :application, :username, :feedback, presence: true
+  validates :subject, :username, :feedback, presence: true
   validates :contact_email, length: { maximum: 255 }, format: { with: /\A\S*@\S*\z/ }, allow_blank: true
   enum status: {
     open: 0,
