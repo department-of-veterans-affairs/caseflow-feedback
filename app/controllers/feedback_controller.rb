@@ -1,4 +1,5 @@
 class FeedbackController < ApplicationController
+  include FeedbackHelper
   before_action :verify_authentication
   before_action :verify_access, except: [:new, :create]
 
@@ -31,6 +32,6 @@ class FeedbackController < ApplicationController
   def feedback_params
     params.require(:feedback)
           .permit(:feedback, :contact_email)
-          .merge(application: session[:redirect], username: current_user.display_name)
+          .merge(application: app_display_name, username: current_user.display_name)
   end
 end

@@ -2,6 +2,10 @@ require "rails_helper"
 require "pry"
 
 RSpec.feature "Enter feedback" do
+  before do
+    reset_application!
+  end
+
   scenario "Load Feedback page" do
     visit "/feedback/new"
     expect(page).to have_content("Tell us about your experience with Caseflow Certification")
