@@ -29,8 +29,5 @@ module CaseflowFeedback
 
     # Gzip files when possible
     config.middleware.use Rack::Deflater
-
-    #Caseflow application official names based on domain name
-    config.app_names = {"www.va.gov" => "Caseflow Certification", "caseflow.ds.va.gov" => "Caseflow Certification", "efolder.cf.ds.va.gov"=> "eFolder Express"}
   end
 end

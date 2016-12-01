@@ -9,7 +9,7 @@ class FeedbackController < ApplicationController
 
   def new
     @feedback = Feedback.new
-    session[:subject] = params[:subject] || "Dispatch"
+    session[:subject] = params[:subject] || "Caseflow"
     session[:redirect] = params[:redirect] || "https://www.va.gov"
   end
 
