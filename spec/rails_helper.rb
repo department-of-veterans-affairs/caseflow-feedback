@@ -73,6 +73,7 @@ User.prepend(StubbableUser)
 
 def reset_application!
   User.clear_stub!
+  Feedback.delete_all
 end
 
 def current_user
