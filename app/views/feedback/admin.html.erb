@@ -14,14 +14,14 @@
         <% @feedback.each do |feedback| %>
           <tr>
             <% if feedback.contact_email.blank? %>
-              <td valign="top"><%= feedback.username %></td>
+              <td class="align-top"><%= feedback.username %></td>
             <% else %>
-              <td valign="top"><%= feedback.contact_email %></td>
+              <td class="align-top"><%= feedback.contact_email %></td>
             <% end %>
-            <td valign="top"><%= feedback.created_at.strftime("%m/%d/%Y") %></td>
-            <td valign="top"><%= feedback.application %></td>
-            <td valign="top"><%= feedback.feedback %></td>
-            <td valign="top">
+            <td class="align-top"><%= feedback.created_at.strftime("%m/%d/%Y") %></td>
+            <td class="align-top"><%= feedback.application %></td>
+            <td class="align-top"><%= feedback.feedback %></td>
+            <td class="align-top">
               <% unless feedback.admin_note.nil? %>
                 <%= feedback.admin_note %>
               <% end %>
