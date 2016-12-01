@@ -8,19 +8,19 @@ RSpec.feature "Enter feedback" do
 
   scenario "Load Feedback page" do
     visit "/feedback/new"
-    expect(page).to have_content("Tell us about your experience with Caseflow Certification")
+    expect(page).to have_content("Tell us about your experience with Dispatch")
     expect(page).to have_css("#feedback_feedback")
     page.should have_link("Cancel")
     fill_in "feedback_feedback", with: "Feedback"
     fill_in "feedback_contact_email", with: "fk@va.gov"
     click_on "Send Feedback"
     expect(page).to have_content("Thanks for your feedback!")
-    expect(page).to have_content("Back to Caseflow Certification")
+    expect(page).to have_content("Back to Dispatch")
     click_on "Send in more feedback"
-    expect(page).to have_content("Tell us about your experience with Caseflow Certification")
+    expect(page).to have_content("Tell us about your experience with Dispatch")
     fill_in "feedback_feedback", with: "Feedback"
     click_on "Send Feedback"
     expect(page).to have_content("Thanks for your feedback!")
-    page.should have_link("Back to Caseflow Certification", href: "https://www.va.gov")
+    page.should have_link("Back to Dispatch", href: "https://www.va.gov")
   end
 end

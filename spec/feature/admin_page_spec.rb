@@ -23,7 +23,7 @@ RSpec.feature "Admin Page " do
 
   scenario "Post feedback and make sure it shows on Feedback View" do
     visit "/feedback/new"
-    expect(page).to have_content("Tell us about your experience with Caseflow Certification")
+    expect(page).to have_content("Tell us about your experience with Dispatch")
     expect(page).to have_css("#feedback_feedback")
     page.should have_link("Cancel")
     fill_in "feedback_feedback", with: "Feedback Posting Test"
@@ -31,7 +31,7 @@ RSpec.feature "Admin Page " do
     click_on "Send Feedback"
     expect(page).to have_content("Thanks for your feedback!")
     click_on "Send in more feedback"
-    expect(page).to have_content("Tell us about your experience with Caseflow Certification")
+    expect(page).to have_content("Tell us about your experience with Dispatch")
     fill_in "feedback_feedback", with: "Feedback Posting Test 2"
     # leave contact email field empty
     click_on "Send Feedback"
@@ -40,10 +40,10 @@ RSpec.feature "Admin Page " do
     visit "/admin"
     expect(page).to have_content("fk@va.gov")
     expect(page).to have_content(Date.current.strftime("%m/%d/%Y"))
-    expect(page).to have_content("Caseflow Certification")
+    expect(page).to have_content("Dispatch")
     expect(page).to have_content("Feedback Posting Test")
     expect(page).to have_content("ANNE MERICA (283)")
-    expect(page).to have_content("Caseflow Certification")
+    expect(page).to have_content("Dispatch")
     expect(page).to have_content("Feedback Posting Test 2")
   end
 end
