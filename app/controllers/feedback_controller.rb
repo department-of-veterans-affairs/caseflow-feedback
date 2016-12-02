@@ -1,5 +1,4 @@
 class FeedbackController < ApplicationController
-  include FeedbackHelper
   before_action :verify_authentication
   before_action :verify_access, except: [:new, :create]
 
@@ -10,13 +9,13 @@ class FeedbackController < ApplicationController
   def new
     @feedback = Feedback.new
     session[:subject] = params[:subject] || "Caseflow"
-    session[:redirect] = params[:redirect] || "https://www.va.gov"
+    session[:redirect] = params[:redirect] || "caseflow.ds.va.gov"
   end
 
   def create
     @feedback = Feedback.new(feedback_params)
     if @feedback.save
-      render "success"
+      SlackService.new.send_new_feedback_notification(request.original_url, session[:subject])
     else
       # Render the feedback form, but with a validation error.
       render "new"
