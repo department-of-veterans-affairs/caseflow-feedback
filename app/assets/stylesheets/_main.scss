@@ -4,3 +4,18 @@
 .align-top {
   vertical-align: top;
 }
+
+
+.cf-logo-image-default {
+  background-image: url(asset-path('caseflow-feedback-logo.svg'));
+  width: 32px;
+  height: 32px;
+  background-size: 32px 32px;
+}
+
+.cf-logo-image-feedback {
+  background-image: url(asset-path('caseflow-feedback-logo.svg'));
+  width: 32px;
+  height: 32px;
+  background-size: 32px 32px;
+}

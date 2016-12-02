@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.from_session(session)
   end
-
   helper_method :current_user
+
+  def logo_class
+    "cf-logo-image-default"
+  end
+  helper_method :logo_class
 end
