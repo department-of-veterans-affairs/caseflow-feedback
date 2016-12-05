@@ -17,8 +17,7 @@ class ApplicationController < ActionController::Base
 
   def verify_authentication
     return true if current_user && current_user.authenticated?
-    session["return_to"] = request.original_url
-    redirect_to "/unauthorized"
+    redirect_to(ENV["SSO_URL"])
   end
 
   def verify_authorized_roles(*roles)
