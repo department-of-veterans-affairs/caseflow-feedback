@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
 
   def verify_authentication
     return true if current_user && current_user.authenticated?
+    # TODO(alex): right now, in demo and local dev, current_user
+    # will return a stub user session and never be nil, so we'll
+    # never hit the line below. this could probably be refactored
+    # for clarity.
     redirect_to(ENV["SSO_URL"])
   end
 
