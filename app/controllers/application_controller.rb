@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
     # will return a stub user session and never be nil, so we'll
     # never hit the line below. this could probably be refactored
     # for clarity.
+    session["return_to"] = request.original_url
     redirect_to(ENV["SSO_URL"])
   end
 
