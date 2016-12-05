@@ -29,5 +29,8 @@ module CaseflowFeedback
 
     # Gzip files when possible
     config.middleware.use Rack::Deflater
+
+    # Default to no analytics (production only)
+    config.google_analytics_account = nil
   end
 end
