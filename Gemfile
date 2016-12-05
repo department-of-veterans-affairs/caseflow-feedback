@@ -30,11 +30,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Discussion: https://github.com/18F/college-choice/issues/597#issuecomment-139034834
 gem "puma", "~> 2.16.0"
 
+gem "httparty"
+
 gem 'pg', platforms: :ruby
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: :ruby
+
+  gem 'rb-readline'
 
   # Used to colorize output for rake tasks
   gem "rainbow"
