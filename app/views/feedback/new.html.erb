@@ -27,7 +27,7 @@
   </div>
 </div>
 <div class="cf-app-segment">
-  <a class="cf-push-left cf-submit" href="<%= app_display_url %>">Cancel</a>
-  <%= f.submit "Send Feedback", class: "cf-push-right cf-submit" %>
+  <a class="cf-push-left cf-submit" href="<%= app_display_url %>" onClick="ga('send', 'event', { eventCategory: 'BackToOrigin', eventAction: 'ClickCancel', eventLabel: 'BackToOrigin', eventValue: 1});">Cancel</a>
+  <%= f.submit "Send Feedback", class: "cf-push-right cf-submit", :onclick => "ga('send', 'event', { eventCategory: 'SubmitFeedback', eventAction: 'ClickSubmitFeedback', eventLabel: 'SubmitFeedback', eventValue: 1});" %>
 </div>
 <% end %>
