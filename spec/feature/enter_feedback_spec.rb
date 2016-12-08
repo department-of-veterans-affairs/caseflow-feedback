@@ -21,6 +21,6 @@ RSpec.feature "Enter feedback" do
     fill_in "feedback_feedback", with: "Feedback"
     click_on "Send Feedback"
     expect(page).to have_content("Thanks for your feedback!")
-    page.should have_link("Back to Caseflow", href: "https://www.va.gov")
+    page.should have_link("Back to Caseflow", href: "caseflow.ds.va.gov")
   end
 end
