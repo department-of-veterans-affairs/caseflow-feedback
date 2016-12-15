@@ -13,7 +13,7 @@ class SlackService
   def send_new_feedback_notification(current_domain, subject)
     return unless webhook_url
 
-    admin_route = current_domain + 'admin'
+    admin_route = current_domain + "admin"
 
     message = "New feedback was submitted about #{subject}. <#{admin_route}|Click here> to view it."
     body = { "text": message }.to_json
