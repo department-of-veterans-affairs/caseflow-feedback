@@ -1,6 +1,5 @@
 require "json"
 require "httparty"
-require "uri"
 
 class SlackService
   def webhook_url
