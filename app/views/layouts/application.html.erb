@@ -34,6 +34,7 @@
               <%= current_user.display_name %>
             </a>
             <ul id="menu" class="cf-dropdown-menu" aria-labelledby="menu-trigger">
+              <a href="<%= url_for controller: 'feedback', action: 'new'%>">Sign out</a>
             </ul>
           </div>
         <% end %>
