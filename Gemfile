@@ -32,6 +32,8 @@ gem "puma", "~> 2.16.0"
 
 gem "httparty"
 
+gem 'rails_stdout_logging'
+
 gem 'pg', platforms: :ruby
 
 group :development, :test do
