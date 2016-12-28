@@ -15,16 +15,20 @@
       <% end %>
       <div>
         <h2>Tell us about your experience with <%= session[:subject] %>.</h2>
-        <p> What's working well? What's not working? Your comments will help us improve Caseflow for everyone.</p>
-      </div>
-      <div>
-        <%= f.text_area :feedback, "aria-label": "Feedback" %>
-      </div>
-      <div class="cf-form-cond-req">
-          <%= f.label :contact_email %>
+        <div>
+          What's working well? What's not working? Your comments will help us improve Caseflow for everyone.<span class='cf-required'> (Required)</span>
+          <span class="usa-input-error-message"></span>
+          <%= f.text_area :feedback, "aria-label": "Feedback" %>
+
+        </div><br/>
+        <div>
+          <%= f.label :contact_email do %>
+            Contact email<span class='cf-required'> (Required)</span>
+          <% end %><span class="usa-input-error-message"></span>
           <%= f.text_field :contact_email %>
+        </div>
       </div>
-    </div>
+      </div>
     <div class="cf-app-segment">
       <a class="cf-push-left cf-submit" href="<%= app_display_url %>" onClick="ga('send', 'event', { eventCategory: 'BackToOrigin', eventAction: 'ClickCancel', eventLabel: 'BackToOrigin', eventValue: 1});">Cancel</a>
       <%= f.submit "Send Feedback", class: "cf-push-right cf-submit", :onclick => "ga('send', 'event', { eventCategory: 'SubmitFeedback', eventAction: 'ClickSubmitFeedback', eventLabel: 'SubmitFeedback', eventValue: 1});" %>
