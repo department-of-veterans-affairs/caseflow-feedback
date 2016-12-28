@@ -9,6 +9,8 @@ RSpec.feature "Enter feedback" do
   scenario "Load Feedback page" do
     visit "/feedback/new"
     expect(page).to have_content("Tell us about your experience with Caseflow")
+    expect(page).to have_content("Your comments will help us improve Caseflow for everyone. (Required)")
+    expect(page).to have_content("Contact email (Required)")
     expect(page).to have_css("#feedback_feedback")
     page.should have_link("Cancel")
     fill_in "feedback_feedback", with: "Feedback"
@@ -19,6 +21,7 @@ RSpec.feature "Enter feedback" do
     click_on "Send in more feedback"
     expect(page).to have_content("Tell us about your experience with Caseflow")
     fill_in "feedback_feedback", with: "Feedback"
+    fill_in "feedback_contact_email", with: "fk@va.gov"
     click_on "Send Feedback"
     expect(page).to have_content("Thanks for your feedback!")
     page.should have_link("Back to Caseflow", href: "caseflow.ds.va.gov")

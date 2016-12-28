@@ -30,8 +30,8 @@ $(document).ready(function () {
           $(element).addClass('error-border');
           $(element).css("width", 375);
           $(element).focus();
-          validated = false;
-        };
+          window.validated = false;
+        }
 
         function removeError(element) {
           $(element).parent().removeClass();
@@ -44,18 +44,18 @@ $(document).ready(function () {
         } else
         {
           // If there was an error, remove it since field is not empty
-          if ($(this).parent().attr('class') == 'usa-input-error') {
+          if ($(this).parent().attr('class') === 'usa-input-error') {
             removeError($(this));
           }
           // Although field is not empty check if email is valid
-          if ((index == 1) && (!testEmail.test($(this).val()))){
+          if ((index === 1) && (!testEmail.test($(this).val()))){
             addError($(this));
           }
         }
 
     });
 
-    return validated
+    return window.validated;
   });
 
 
