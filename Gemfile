@@ -34,11 +34,15 @@ gem "httparty"
 
 gem 'rails_stdout_logging'
 
+# Error reporting to Sentry
+gem "sentry-raven"
+
 gem 'pg', platforms: :ruby
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: :ruby
+  gem 'pry'
 
   gem 'rb-readline'
 
@@ -61,6 +65,7 @@ group :development, :test do
   gem 'capybara'
   gem 'sniffybara', git: 'https://github.com/department-of-veterans-affairs/sniffybara.git'
   gem 'simplecov'
+  gem 'launchy'
 end
 
 group :development do
