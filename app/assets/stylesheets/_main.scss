@@ -1,6 +1,8 @@
 // Add scss includes explicitly here.
 @import 'caseflow_main';
 
+$usa-input-error-color: #cd2026;
+
 .align-top {
   vertical-align: top;
 }
@@ -21,11 +23,11 @@
 }
 
 .cf-required {
-  white-space:nowrap;
+  white-space: nowrap;
 }
 
 .usa-input-error {
-  border-left: 4px solid #cd2026;
+  border-left: 4px solid $usa-input-error-color;
   margin-top: 3rem;
   padding-bottom: 0.8rem;
   padding-left: 1.5rem;
@@ -35,7 +37,7 @@
 }
 
 .usa-input-error-message {
-  color: #cd2026;
+  color: $usa-input-error-color;
   display: block;
   font-size: 1.7rem;
   font-weight: 700;
@@ -50,5 +52,5 @@
 }
 
 .error-border {
-  border: solid #cd2026;
+  border: solid $usa-input-error-color;
 }
