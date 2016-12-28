@@ -20,8 +20,35 @@
   background-size: 32px 32px;
 }
 
+.cf-required {
+  white-space:nowrap;
+}
+
+.usa-input-error {
+  border-left: 4px solid #cd2026;
+  margin-top: 3rem;
+  padding-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  padding-top: 0.8rem;
+  position: relative;
+  right: 1.9rem;
+}
+
+.usa-input-error-message {
+  color: #cd2026;
+  display: block;
+  font-size: 1.7rem;
+  font-weight: 700;
+  padding-bottom: 3px;
+  padding-top: 3px;
+}
+
 .feedback {
   width: 458px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.error-border {
+  border: solid #cd2026;
 }
