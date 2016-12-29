@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :setup_fakes
+  before_action :set_raven_user
 
   def unauthorized
     render status: 403
@@ -40,4 +41,16 @@ class ApplicationController < ActionController::Base
     "cf-logo-image-default"
   end
   helper_method :logo_class
+
+  def set_raven_user
+    if current_user && ENV["SENTRY_DSN"]
+      # Raven sends error info to Sentry.
+      Raven.user_context(
+        id: current_user.css_id,
+        css_id: current_user.css_id,
+        email: current_user.email,
+        station_id: current_user.station_id
+      )
+    end
+  end
 end
