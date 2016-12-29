@@ -1,7 +1,7 @@
 class User
   include ActiveModel::Model
   # Ephemeral values obtained from CSS on auth. Stored in user's session
-  attr_accessor :roles, :css_id, :station_id, :regional_office
+  attr_accessor :roles, :css_id, :station_id, :regional_office, :email
 
   def username
     css_id
@@ -36,6 +36,7 @@ class User
       new(css_id: user["id"],
           station_id: user["station_id"],
           roles: user["roles"],
+          email: user["email"],
           regional_office: user["regional_office"] || session[:regional_office])
     end
 

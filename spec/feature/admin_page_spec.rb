@@ -46,4 +46,11 @@ RSpec.feature "Admin Page " do
     expect(page).to have_content("Caseflow")
     expect(page).to have_content("Feedback Posting Test 2")
   end
+
+  scenario "Set Raven user context without errors" do
+    stub_const("ENV", ENV.to_hash.merge("SENTRY_DSN" => "asdf"))
+    User.authenticate!(roles: ["System Admin"])
+    visit "/admin"
+    expect(page).to have_content("User")
+  end
 end
