@@ -38,7 +38,7 @@ RSpec.feature "Admin Page " do
     expect(page).to have_content(Date.current.strftime("%m/%d/%Y"))
     expect(page).to have_content("Caseflow")
     expect(page).to have_content("Feedback Posting Test")
-    expect(page).to have_content("ANNE MERICA (283)")
+    expect(page).to have_content("DSUSER (283)")
     expect(page).to have_content("Caseflow")
   end
 end

@@ -33,7 +33,6 @@ RSpec.feature "Enter feedback" do
     click_on "Send Feedback"
     expect(page).to have_content("Make sure you’ve filled out the comment box below.")
     expect(page).to have_content("Make sure you’ve entered a valid email address below.")
-    screenshot_and_save_page
     fill_in "feedback_feedback", with: "Feedback"
     fill_in "feedback_contact_email", with: "fk@va"
     click_on "Send Feedback"
