@@ -1,5 +1,5 @@
-<%= form_for @feedback, url: feedback_path do |f| %>
-  <div class="feedback">
+<%= form_for @feedback, url: feedback_path, html: {class: "cf-form"} do |f| %>
+  <div class="feedback-out">
     <div class="cf-app-segment cf-app-segment--alt">
       <% if @feedback.errors.any? %>
         <div id="error_explanation">
@@ -16,19 +16,21 @@
       <div>
         <h2>Tell us about your experience with <%= session[:subject] %>.</h2>
         <div>
-          What's working well? What's not working? Your comments will help us improve Caseflow for everyone.<span class='cf-required'> (Required)</span>
+          <%= f.label :feedback do %>
+            <div class="feedback-in">What's working well? What's not working? Your comments will help us improve Caseflow for everyone.<span class='cf-required'> Required</span></div>
+          <% end %>
           <span class="usa-input-error-message"></span>
           <%= f.text_area :feedback, "aria-label": "Feedback" %>
-
         </div><br/>
         <div>
           <%= f.label :contact_email do %>
-            Contact email<span class='cf-required'> (Required)</span>
-          <% end %><span class="usa-input-error-message"></span>
+             <div class="feedback-in">Contact email<span class='cf-required'> Required</span></div>
+          <% end %>
+          <span class="usa-input-error-message"></span>
           <%= f.text_field :contact_email %>
         </div>
       </div>
-      </div>
+    </div>
     <div class="cf-app-segment">
       <a class="cf-push-left cf-submit" href="<%= app_display_url %>" onClick="ga('send', 'event', { eventCategory: 'BackToOrigin', eventAction: 'ClickCancel', eventLabel: 'BackToOrigin', eventValue: 1});">Cancel</a>
       <%= f.submit "Send Feedback", class: "cf-push-right cf-submit", :onclick => "ga('send', 'event', { eventCategory: 'SubmitFeedback', eventAction: 'ClickSubmitFeedback', eventLabel: 'SubmitFeedback', eventValue: 1});" %>

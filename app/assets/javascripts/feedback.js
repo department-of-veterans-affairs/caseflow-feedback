@@ -1,7 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 $(document).ready(function () {
-  $('.new_feedback').submit(function () {
+  $('.cf-form').submit(function () {
     window.validated = true;
     var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
     var errors = {
@@ -10,12 +10,11 @@ $(document).ready(function () {
     };
     // Check if textarea or input is empty
     $($(this).find( 'textarea, input[type!="hidden"]' ).get().reverse()).each(function (index) {
-        // Add error class, add error message, change border css, add focus and adjust width
+        // Add error class, add error message, add focus and adjust width
         function addError(element) {
           $(element).parent().addClass('usa-input-error');
           $('.usa-input-error-message:eq('+(2-index) +')').text(errors[index]["message"]);
-          $(element).addClass('error-border');
-          $(element).css("width", 375);
+          $(element).css("width", '46rem');
           $(element).focus();
           window.validated = false;
         }
@@ -23,7 +22,6 @@ $(document).ready(function () {
         function removeError(element) {
           $(element).parent().removeClass();
           $('.usa-input-error-message:eq('+(2-index)+')').empty();
-          $(element).removeClass('error-border');
         }
         // If it is empty add error
         if ( ! $(this).val() ) {
