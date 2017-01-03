@@ -20,6 +20,15 @@ GIT
       rainbow
       selenium-webdriver
 
+GIT
+  remote: https://github.com/harrisj/us_web_design_standards_gem.git
+  revision: a789c0a7b55d13f378fb3a0da675bcc687079ea3
+  branch: rails-assets-fixes
+  specs:
+    us_web_design_standards (0.0.2)
+      railties
+      sass (~> 3.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -284,9 +293,6 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.3)
       execjs (>= 0.3.0, < 3)
-    us_web_design_standards (0.0.2)
-      railties
-      sass (~> 3.4)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -335,6 +341,7 @@ DEPENDENCIES
   sqlite3
   tzinfo-data
   uglifier (>= 1.3.0)
+  us_web_design_standards!
   web-console (~> 2.0)
 
 BUNDLED WITH

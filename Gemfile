@@ -39,6 +39,9 @@ gem "sentry-raven"
 
 gem 'pg', platforms: :ruby
 
+# Style
+gem 'us_web_design_standards', git: 'https://github.com/harrisj/us_web_design_standards_gem.git', branch: 'rails-assets-fixes'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: :ruby

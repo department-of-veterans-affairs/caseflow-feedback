@@ -32,19 +32,14 @@ RSpec.feature "Admin Page " do
     expect(page).to have_content("Thanks for your feedback!")
     click_on "Send in more feedback"
     expect(page).to have_content("Tell us about your experience with Caseflow")
-    fill_in "feedback_feedback", with: "Feedback Posting Test 2"
-    # leave contact email field empty
-    click_on "Send Feedback"
-    expect(page).to have_content("Thanks for your feedback!")
     User.authenticate!(roles: ["System Admin"])
     visit "/admin"
     expect(page).to have_content("fk@va.gov")
     expect(page).to have_content(Date.current.strftime("%m/%d/%Y"))
     expect(page).to have_content("Caseflow")
     expect(page).to have_content("Feedback Posting Test")
-    expect(page).to have_content("ANNE MERICA (283)")
+    expect(page).to have_content("DSUSER (283)")
     expect(page).to have_content("Caseflow")
-    expect(page).to have_content("Feedback Posting Test 2")
   end
 
   scenario "Set Raven user context without errors" do

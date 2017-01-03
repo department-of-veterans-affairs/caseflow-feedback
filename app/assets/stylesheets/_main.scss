@@ -20,8 +20,25 @@
   background-size: 32px 32px;
 }
 
-.feedback {
-  width: 458px;
+// Overrides textarea max-width from commons*/
+textarea {
+  max-width: 46rem !important;
+  margin-right: none;
+}
+
+.cf-required {
+  font-style: italic;
+}
+
+.feedback-out {
+  max-width: 52rem;
   margin-left: auto;
   margin-right: auto;
 }
+
+.feedback-in {
+  width: 46rem;
+  height: auto;
+  margin: 0 auto;
+}
+
