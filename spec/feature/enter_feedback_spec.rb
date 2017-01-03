@@ -10,8 +10,8 @@ RSpec.feature "Enter feedback" do
     visit "/feedback/new"
     expect(page).to have_content("Tell us about your experience with Caseflow")
     expect(page).to have_content("What's working well? What's not working?")
-    expect(page).to have_content("Your comments will help us improve Caseflow for everyone. Required")
-    expect(page).to have_content("Contact email Required")
+    expect(page).to have_content("Your comments will help us improve Caseflow for everyone. (Required)")
+    expect(page).to have_content("Contact email (Required)")
     expect(page).to have_css("#feedback_feedback")
     page.should have_link("Cancel")
     fill_in "feedback_feedback", with: "Feedback"
