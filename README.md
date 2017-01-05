@@ -6,7 +6,7 @@ Application for collecting feedback.
 
 1. Install Ruby 2.3. (It is suggested to use a Ruby version manager such as [rbenv](https://github.com/rbenv/rbenv#installation) and then to [install Ruby 2.3](https://github.com/rbenv/rbenv#installing-ruby-versions)).
 1. Install Bundler to manager dependencies: `gem install bundler`
-1. Setup the database: `bundle exec rake db:migrate`
+1. Setup the database: `bundle exec rake db:setup` then `bundle exec rake db:migrate`
 1. Start the application: `bundle exec rails s`
 
 ## Commands
