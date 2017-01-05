@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
     render status: 403
   end
 
+  def logout
+    session["user"] = nil
+    redirect_to "/"
+  end
+
   private
 
   def setup_fakes
