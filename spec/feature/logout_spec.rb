@@ -7,10 +7,9 @@ RSpec.feature "Logout" do
 
   scenario "Logging out redirects to home page" do
     visit "feedback/new"
-    expect(page).to have_content("Tell us about your experience with Caseflow.")
-    expect(page).to have_content("ANNE MERICA (283)")
     click_on "ANNE MERICA (283)"
+    expect(page).to have_content("Sign out")
+    page.should have_selector(:link_or_button, "Sign out")
     click_on "Sign out"
-    expect(page).to have_content("Tell us about your experience with Caseflow.")
   end
 end
