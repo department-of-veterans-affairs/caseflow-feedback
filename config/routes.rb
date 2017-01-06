@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get "health-check" => "health_checks#show"
   get "admin" => "feedback#admin"
 
+  get 'logout', to: 'application#logout'
 end

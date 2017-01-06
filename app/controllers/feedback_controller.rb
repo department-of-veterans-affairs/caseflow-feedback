@@ -26,7 +26,6 @@ class FeedbackController < ApplicationController
   private
 
   def verify_access
-    # Passed string is irrelevant here, since can? method always returns true for "System Admin" in user.rb
     verify_authorized_roles("System Admin")
   end
 
