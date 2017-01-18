@@ -34,4 +34,5 @@ class FeedbackController < ApplicationController
           .permit(:feedback, :contact_email)
           .merge(subject: session[:subject], username: current_user.display_name)
   end
+
 end

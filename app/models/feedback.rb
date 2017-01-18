@@ -6,4 +6,27 @@ class Feedback < ActiveRecord::Base
     in_progress: 1,
     closed: 2
   }
+
+  after_create :create_github_issue
+
+  APPLICATION_LABELS = {
+    "eFolder Express" => "eFolder",
+    "Caseflow Dispatch" => "Dispatch",
+    "Caseflow" => "Certification",
+    "Caseflow Certification" => "Certification"
+  }.freeze
+
+  def github_labels
+    "Product Support Team, Source - Feedback, Current Sprint, #{APPLICATION_LABELS[subject]}"
+  end
+
+  private
+
+  def create_github_issue
+    github.create_issue(self)
+  end
+
+  def github
+    (Rails.env.development? || Rails.env.demo?) ? GithubService.new : GithubService.new
+  end
 end
