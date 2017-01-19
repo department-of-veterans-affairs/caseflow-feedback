@@ -30,6 +30,10 @@ class Feedback < ActiveRecord::Base
                             details: feedback).render
   end
 
+  def issue_number
+    github_url.present? ? github_url.split("/")[6] : ""
+  end
+
   private
 
   def create_github_issue

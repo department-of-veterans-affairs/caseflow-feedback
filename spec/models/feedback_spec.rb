@@ -49,4 +49,10 @@ RSpec.describe Feedback, type: :model do
       expect(feedback.github_labels).to eq labels
     end
   end
+
+  context "#issue_number" do
+    it "returns issue number" do
+      expect(Feedback.create(feedback).issue_number).to eq "95"
+    end
+  end
 end
