@@ -40,6 +40,7 @@ RSpec.feature "Admin Page " do
     expect(page).to have_content("Feedback Posting Test")
     expect(page).to have_content("DSUSER (283)")
     expect(page).to have_content("Caseflow")
+    expect(Feedback.find_by(feedback: "Feedback Posting Test").github_url).to_not eq nil
   end
 
   scenario "Set Raven user context without errors" do

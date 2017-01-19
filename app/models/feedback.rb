@@ -1,4 +1,6 @@
 class Feedback < ActiveRecord::Base
+  include ApplicationHelper
+
   validates :subject, :username, :feedback, presence: true
   validates :contact_email, length: { maximum: 255 }, format: { with: /\A\S*@\S*\z/ }, allow_blank: true
   enum status: {
@@ -17,16 +19,27 @@ class Feedback < ActiveRecord::Base
   }.freeze
 
   def github_labels
-    "Product Support Team, Source - Feedback, Current Sprint, #{APPLICATION_LABELS[subject]}"
+    labels = "Product Support Team, Source - Feedback, Current Sprint"
+    labels += ", " + APPLICATION_LABELS[subject] if APPLICATION_LABELS[subject]
+    labels
+  end
+
+  def render_issue_template
+    GithubIssueRenderer.new(username: username,
+                            email: contact_email,
+                            details: feedback).render
   end
 
   private
 
   def create_github_issue
-    github.create_issue(self)
+    url = github.create_issue(title: feedback[0..100],
+                              body: render_issue_template,
+                              labels: github_labels)
+    update_attributes(github_url: url)
   end
 
   def github
-    (Rails.env.development? || Rails.env.demo?) ? GithubService.new : GithubService.new
+    use_fakes? ? Fakes::GithubService.new : GithubService.new
   end
 end

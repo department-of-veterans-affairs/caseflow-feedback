@@ -1,7 +1,6 @@
-require 'erb'
+require "erb"
 
 class GithubIssueRenderer
-
   def initialize(email:, details:, username:)
     @username = username
     @email = email

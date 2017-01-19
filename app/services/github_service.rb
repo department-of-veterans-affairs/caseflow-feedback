@@ -1,14 +1,11 @@
+# frozen_string_literal: true
 require "erb"
 
 class GithubService
+  REPO = "department-of-veterans-affairs/appeals-support".freeze
 
-  # REPO = "department-of-veterans-affairs/appeals-support".freeze
-  REPO = "aroltsch/checkers".freeze
-
-  def create_issue(record)
-    body = GithubIssueRenderer.new(username: record.username,
-                                   email: record.contact_email,
-                                   details: record.feedback).render
-    Octokit.create_issue(REPO, record.feedback[0..100], body, labels: record.github_labels)[:url]
+  def create_issue(title:, body:, labels:)
+    issue = Octokit.create_issue(REPO, title, body, labels: labels)
+    issue[:html_url] if issue
   end
 end

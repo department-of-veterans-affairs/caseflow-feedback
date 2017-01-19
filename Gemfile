@@ -37,6 +37,7 @@ gem 'rails_stdout_logging'
 # Error reporting to Sentry
 gem "sentry-raven"
 
+# Github API
 gem "octokit", "~> 4.0"
 
 gem 'pg', platforms: :ruby

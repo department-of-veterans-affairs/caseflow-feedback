@@ -29,6 +29,8 @@ require "rspec/rails"
 require "capybara"
 Capybara.default_driver = :sniffybara
 
+ActiveRecord::Migration.maintain_test_schema!
+
 # Convenience methods for stubbing current user
 module StubbableUser
   module ClassMethods

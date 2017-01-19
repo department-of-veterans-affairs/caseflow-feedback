@@ -20,4 +20,33 @@ RSpec.describe Feedback, type: :model do
       expect { Feedback.create!(f) }.not_to raise_error
     end
   end
+
+  context "callbacks" do
+    it "should update github url after feedback is created" do
+      expect(Feedback.create(feedback).github_url).to_not eq nil
+    end
+  end
+
+  context "#render_issue_template" do
+    it "should generate template correctly" do
+      feedback[:contact_email] = "test@example.com"
+      result = Feedback.create(feedback).render_issue_template
+      expect(result).to match(/alf/)
+      expect(result).to match(/test@example.com/)
+      expect(result).to match(/gr8 app/)
+    end
+  end
+
+  context "#github_labels" do
+    it "it recognizes the subject" do
+      labels = "Product Support Team, Source - Feedback, Current Sprint, eFolder"
+      expect(Feedback.create(feedback).github_labels).to eq labels
+    end
+
+    it "it does not recognize the subject" do
+      labels = "Product Support Team, Source - Feedback, Current Sprint"
+      feedback = Feedback.create(subject: "other", username: "alf", feedback: "gr8 app")
+      expect(feedback.github_labels).to eq labels
+    end
+  end
 end
