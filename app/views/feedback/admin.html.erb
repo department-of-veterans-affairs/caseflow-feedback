@@ -7,6 +7,7 @@
         <th scope="col"><h3>Date</h3></th>
         <th scope="col"><h3>Application</h3></th>
         <th scope="col"><h3>Feedback</h3></th>
+        <th scope="col"><h3>Github Issue</h3></th>
         </tr>
       </thead>
 
@@ -21,10 +22,7 @@
             <td class="align-top"><%= feedback.created_at.strftime("%m/%d/%Y") %></td>
             <td class="align-top"><%= feedback.subject %></td>
             <td class="align-top"><%= feedback.feedback %></td>
-            <td class="align-top">
-              <% unless feedback.admin_note.nil? %>
-                <%= feedback.admin_note %>
-              <% end %>
+            <td class="align-top"><%= link_to feedback.issue_number, feedback.github_url, target: "_blank"%>
             </td>
           </tr>
         <% end %>
