@@ -46,13 +46,13 @@ $(document).ready(function () {
   }
 
   function processState() {
-    questionNames.forEach(function(questionName) {
+    requiredQuestions.forEach(function(questionName) {
       validateQuestion(questionName, false);
     });
   }
 
   function render() {
-    questionNames.forEach(function(questionName) {
+    requiredQuestions.forEach(function(questionName) {
       var error = state[questionName].error;
       var $q = $question(questionName);
       $q.find(".usa-input-error-message").html(error);
@@ -82,7 +82,7 @@ $(document).ready(function () {
   }
 
   function getInvalidQuestionNames() {
-    return questionNames.filter(function(questionName){
+    return requiredQuestions.filter(function(questionName){
       return !validateQuestion(questionName, true);
     });
   }
