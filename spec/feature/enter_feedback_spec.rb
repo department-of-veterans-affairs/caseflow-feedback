@@ -1,10 +1,9 @@
 require "rails_helper"
 require "pry"
 
-RSpec.feature "Enter feedback", focus: true do
+RSpec.feature "Enter feedback" do
   before do
     reset_application!
-    Capybara.current_session.current_window.resize_to(2400,1600)
   end
 
   scenario "Load Feedback page" do
@@ -17,7 +16,7 @@ RSpec.feature "Enter feedback", focus: true do
     page.should have_link("Cancel")
     fill_in "What's working well?", with: "Enter Feedback Spec"
     fill_in "Contact email", with: "fk@va.gov"
-    screenshot_and_save_page
+    fill_in "If you are having an issue", with: "Veteran PII"
     click_on "Send Feedback"
     expect(page).to have_content("Thanks for your feedback!")
     expect(page).to have_content("Back to Caseflow")
@@ -32,7 +31,6 @@ RSpec.feature "Enter feedback", focus: true do
 
   scenario "Validate Input Fields" do
     visit "/feedback/new"
-    screenshot_and_save_page
     click_on "Send Feedback"
     expect(page).to have_content("Make sure you’ve filled out the comment box below.")
     expect(page).to have_content("Make sure you’ve entered a valid email address below.")
