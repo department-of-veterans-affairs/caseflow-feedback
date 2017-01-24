@@ -1,34 +1,21 @@
-<%= form_for @feedback, url: feedback_path, html: {class: "cf-form"} do |f| %>
+<%= form_for @feedback, url: feedback_path,
+            html: { id: "feedback-form", class: "cf-form cf-app-segment" },
+            builder: CaseflowFormBuilder do |f| %>
+
   <div class="feedback-out">
+
     <div class="cf-app-segment cf-app-segment--alt">
-      <% if @feedback.errors.any? %>
-        <div id="error_explanation">
-          <h1>
-            <%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:
-          </h1>
-          <ul>
-            <% @feedback.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <div>
-        <h2>Tell us about your experience with <%= session[:subject] %>.</h2>
-        <div>
-          <%= f.label :feedback do %>
-            <div class="feedback-in">What's working well? What's not working? Your comments will help us improve Caseflow for everyone.<span class='cf-required'> (Required)</span></div>
-          <% end %>
-          <span class="usa-input-error-message"></span>
-          <%= f.text_area :feedback, "aria-label": "Feedback" %>
-        </div><br/>
-        <div>
-          <%= f.label :contact_email do %>
-             <div class="feedback-in">Contact email<span class='cf-required'> (Required)</span></div>
-          <% end %>
-          <span class="usa-input-error-message"></span>
-          <%= f.text_field :contact_email %>
-        </div>
+
+      <h2>Tell us about your experience with <%= session[:subject] %>.</h2>
+      <div class="feedback-in">
+        <%= f.text_area :feedback,
+          question_name: "feedback",
+          label: "What's working well? What's not working? Your comments will help us improve Caseflow for everyone.",
+          warning: "Please refrain from putting PII in this box" %>
+        <%= f.text_field :veteran_pii,
+          question_name: "veteran_pii", label: "If you are having an issue with a specific case number or Veteran ID please let us know. It's safe to put PII in this field." %>
+        <%= f.text_field :contact_email,
+          question_name: "email", label: "Contact email" %>
       </div>
     </div>
     <div class="cf-app-segment">

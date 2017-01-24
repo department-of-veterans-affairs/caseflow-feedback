@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170118211220) do
     t.integer  "status",        default: 0
     t.text     "contact_email"
     t.string   "github_url"
+    t.text     "veteran_pii"
   end
 
 end
