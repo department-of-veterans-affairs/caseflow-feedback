@@ -20,14 +20,28 @@
   background-size: 32px 32px;
 }
 
-// Overrides textarea max-width from commons*/
 textarea {
-  max-width: 46rem !important;
+  width: 46rem;
   margin-right: none;
 }
 
-.cf-required {
+#feedback_contact_email {
+  width: 46rem;
+}
+.cf-form-textarea, .cf-form-textinput {
+  max-width: 47.9rem;
+  width: 47.9rem;
+}
+
+.italic {
   font-style: italic;
+  margin-bottom: 1rem;
+  float: right;
+}
+
+.margin {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .feedback-out {
@@ -39,6 +53,6 @@ textarea {
 .feedback-in {
   width: 46rem;
   height: auto;
-  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 0rem;
 }
-

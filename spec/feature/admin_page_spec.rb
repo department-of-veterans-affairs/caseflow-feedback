@@ -26,8 +26,9 @@ RSpec.feature "Admin Page " do
     expect(page).to have_content("Tell us about your experience with Caseflow")
     expect(page).to have_css("#feedback_feedback")
     page.should have_link("Cancel")
-    fill_in "feedback_feedback", with: "Feedback Posting Test"
-    fill_in "feedback_contact_email", with: "fk@va.gov"
+    fill_in "What's working well?", with: "Admin Page Spec"
+    fill_in "Contact email", with: "fk@va.gov"
+    page.execute_script "window.scrollBy(0,10000)"
     click_on "Send Feedback"
     expect(page).to have_content("Thanks for your feedback!")
     click_on "Send in more feedback"
