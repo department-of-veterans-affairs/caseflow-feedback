@@ -15,7 +15,10 @@ class FeedbackController < ApplicationController
   def create
     @feedback = Feedback.new(feedback_params)
     if @feedback.save
-      SlackService.new.send_new_feedback_notification(request.base_url, session[:subject])
+      slack = SlackService.new(current_domain: request.base_url,
+                               subject: session[:subject],
+                               github_url: @feedback.github_url)
+      slack.send_new_feedback_notification
       render "success"
     else
       # Render the feedback form, but with a validation error.
