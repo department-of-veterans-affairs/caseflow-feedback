@@ -11,8 +11,6 @@ $(document).ready(function () {
   };
   var emailPattern = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
 
-  init();
-
   function init() {
     initState();
 
@@ -24,6 +22,17 @@ $(document).ready(function () {
       return onSubmit();
     });
   }
+
+  function initState() {
+      questionNames.forEach(function(questionName) {
+        state[questionName] = { show: true };
+      });
+      requiredQuestions.forEach(function(questionName) {
+        $question(questionName).find(".question-label").append(
+          $("<span class='cf-required italic'> Required</span>")
+        );
+      });
+    }
 
   function reevalulate() {
     fetchState();
@@ -58,13 +67,6 @@ $(document).ready(function () {
       $q.find(".usa-input-error-message").html(error);
       $q.toggleClass("usa-input-error", !!error);
     });
-  }
-
-  function toggleQuestion(questionName) {
-      var $q = $question(questionName);
-      var hideQuestion = !state[questionName].show;
-
-      $q.toggleClass('hidden-field', hideQuestion);
   }
 
   function onSubmit() {
@@ -105,14 +107,5 @@ $(document).ready(function () {
     return isValid;
   }
 
-  function initState() {
-    questionNames.forEach(function(questionName) {
-      state[questionName] = { show: true };
-    });
-    requiredQuestions.forEach(function(questionName) {
-      $question(questionName).find(".question-label").append(
-        $("<span class='cf-required italic'> Required</span>")
-      );
-    });
-  }
+  init();
 });

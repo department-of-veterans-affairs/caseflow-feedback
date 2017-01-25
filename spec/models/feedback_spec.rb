@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Feedback, type: :model do
   let(:feedback_no_email) { { subject: "eFolder Express", username: "alf", feedback: "gr8 app" } }
-  let(:feedback) { { subject: "eFolder Express", username: "alf", feedback: "gr8 app", contact_email: "fk@va.gov"} }
+  let(:feedback) { { subject: "eFolder Express", username: "alf", feedback: "gr8 app", contact_email: "fk@va.gov" } }
 
   after do
     Feedback.delete_all
