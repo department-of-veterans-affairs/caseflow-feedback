@@ -28,7 +28,6 @@ RSpec.feature "Admin Page " do
     page.should have_link("Cancel")
     fill_in "What's working well?", with: "Admin Page Spec"
     fill_in "Contact email", with: "fk@va.gov"
-    page.execute_script "window.scrollBy(0,10000)"
     click_on "Send Feedback"
     expect(page).to have_content("Thanks for your feedback!")
     click_on "Send in more feedback"
@@ -39,10 +38,10 @@ RSpec.feature "Admin Page " do
     expect(page).to have_content("fk@va.gov")
     expect(page).to have_content(Date.current.strftime("%m/%d/%Y"))
     expect(page).to have_content("Caseflow")
-    expect(page).to have_content("Feedback Posting Test")
+    expect(page).to have_content("Admin Page Spec")
     expect(page).to have_content("DSUSER (283)")
     expect(page).to have_content("Caseflow")
-    expect(Feedback.find_by(feedback: "Feedback Posting Test").github_url).to_not eq nil
+    expect(Feedback.find_by(feedback: "Admin Page Spec").github_url).to_not eq nil
   end
 
   scenario "Set Raven user context without errors" do
