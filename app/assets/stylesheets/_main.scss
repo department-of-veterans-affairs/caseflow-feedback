@@ -22,13 +22,10 @@
 
 textarea {
   width: 46rem;
-  margin-right: none;
 }
 
-#feedback_contact_email {
-  width: 46rem;
-}
-.cf-form-textarea, .cf-form-textinput {
+.cf-form-textarea,
+.cf-form-textinput {
   max-width: 47.9rem;
   width: 47.9rem;
 }
@@ -54,5 +51,5 @@ textarea {
   width: 46rem;
   height: auto;
   margin-top: 2rem;
-  margin-bottom: 0rem;
+  margin-bottom: 0;
 }
