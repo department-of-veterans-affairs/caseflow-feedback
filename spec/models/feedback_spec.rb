@@ -2,7 +2,10 @@ require "rails_helper"
 
 RSpec.describe Feedback, type: :model do
   let(:feedback_no_email) { { subject: "eFolder Express", username: "alf", feedback: "gr8 app" } }
-  let(:feedback) { { subject: "eFolder Express", username: "alf", feedback: "gr8 app", contact_email: "fk@va.gov" } }
+  let(:feedback) do
+    { subject: "eFolder Express", username: "alf", feedback: "gr8 app",
+      contact_email: "fk@va.gov", veteran_pii: "PII" }
+  end
 
   after do
     Feedback.delete_all
@@ -56,6 +59,12 @@ RSpec.describe Feedback, type: :model do
   context "#issue_number" do
     it "returns issue number" do
       expect(Feedback.create(feedback).issue_number).to eq "95"
+    end
+  end
+
+  context "#veteran_pii" do
+    it "saves veteran_pii" do
+      expect(Feedback.create(feedback).veteran_pii).to eq "PII"
     end
   end
 end
