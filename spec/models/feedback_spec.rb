@@ -1,22 +1,25 @@
 require "rails_helper"
 
 RSpec.describe Feedback, type: :model do
-  let(:feedback) { { subject: "eFolder Express", username: "alf", feedback: "gr8 app" } }
+  let(:feedback_no_email) { { subject: "eFolder Express", username: "alf", feedback: "gr8 app" } }
+  let(:feedback) { { subject: "eFolder Express", username: "alf", feedback: "gr8 app", contact_email: "fk@va.gov" } }
 
   after do
     Feedback.delete_all
   end
 
   context "#contact_email" do
-    it "is not required" do
-      expect { Feedback.create!(feedback) }.not_to raise_error
+    it "is required" do
+      expect { Feedback.create!(feedback_no_email) }.to raise_error
     end
 
-    it "must have @ sign" do
-      f = feedback.clone
+    it "must be in valid format" do
+      f = feedback_no_email.clone
       f[:contact_email] = "no_at_sign"
       expect { Feedback.create!(f) }.to raise_error
       f[:contact_email] = "yes@sign"
+      expect { Feedback.create!(f) }.to raise_error
+      f[:contact_email] = "yes@sign.com"
       expect { Feedback.create!(f) }.not_to raise_error
     end
   end
