@@ -9,7 +9,7 @@
       <h2>Tell us about your experience with <%= session[:subject] %>.</h2>
       <div class="feedback-in">
         <%= f.text_area :feedback,
-          question_name: "feedback",
+          question_name: "feedback", maxlength: 2000,
           label: "What's working well? What's not working? Your comments will help us improve Caseflow for everyone.",
           warning: "Please refrain from putting PII in this box" %>
         <%= f.text_field :veteran_pii,
