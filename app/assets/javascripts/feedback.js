@@ -14,6 +14,8 @@ $(document).ready(function () {
   function init() {
     initState();
 
+    new window.CharacterCounter($question(questionNames[0]));
+
     $("#feedback-form input, #feedback-form textarea").on("change keyup paste mouseup", function() {
       return reevalulate();
     });
