@@ -47,7 +47,7 @@ $(document).ready(function () {
   }
 
   function questionValue(questionName) {
-    return $question(questionName).find("input[type='text'], textarea, input[type='radio']:checked").val();
+    return $question(questionName).find("input[type='text'], textarea, input[type='radio']:checked").val().trim();
   }
 
   function fetchState() {
