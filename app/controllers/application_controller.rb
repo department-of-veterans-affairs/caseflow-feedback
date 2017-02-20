@@ -47,6 +47,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :logo_class
 
+  def logo_name
+    "Feedback"
+  end
+  helper_method :logo_name
+
   def set_raven_user
     if current_user && ENV["SENTRY_DSN"]
       # Raven sends error info to Sentry.
