@@ -27,9 +27,9 @@
     <nav class="cf-nav">
       <div class="usa-grid-full">
         <a href="/">
-          <h1 class="cf-logo"><%= content_tag(:span, nil, :class => "cf-logo-image #{logo_class}") %>Caseflow</h1> <span class="cf-logo-name"><%= logo_name %></span>
+          <h1 class="cf-logo"><%= content_tag(:span, nil, :class => "cf-logo-image #{logo_class}") %>Caseflow</h1>
         </a>
-        <h2 id="page-title" class="cf-application-title"><%= yield :page_title %></h2>
+        <h2 id="page-title" class="cf-application-title"><span class="cf-logo-name"><%= logo_name %></span><%= yield :page_title %></h2>
 
         <% unless current_user.nil? %>
           <div class="cf-dropdown cf-nav-dropdown">
