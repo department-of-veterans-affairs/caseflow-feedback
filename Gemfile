@@ -1,6 +1,6 @@
 source ENV['GEM_SERVER_URL'] || 'https://rubygems.org'
 
-gem "caseflow", git: "https://github.com/department-of-veterans-affairs/caseflow-commons", ref: "5ed8def"
+gem "caseflow", git: "https://github.com/department-of-veterans-affairs/caseflow-commons", ref: "d2498d5917"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
@@ -44,8 +44,9 @@ gem "octokit", "~> 4.0"
 
 gem 'pg', platforms: :ruby
 
-# Style
-gem 'us_web_design_standards', git: 'https://github.com/harrisj/us_web_design_standards_gem.git', branch: 'rails-assets-fixes'
+# Explicitly adding USWDS gem until it's published and we can
+# include it via commons
+gem "uswds-rails", git: "https://github.com/18F/uswds-rails-gem.git"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
