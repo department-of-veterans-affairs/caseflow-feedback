@@ -99,9 +99,10 @@ $(document).ready(function () {
   }
 
   function sensitiveMatch(value) {
-    if (pii = value.match(sensitivePattern)) {
+    var pii = value.match(sensitivePattern);
+    if (pii) {
       return pii[pii.length-1];
-    };
+    }
   }
 
   function validateQuestion(questionName, showError) {

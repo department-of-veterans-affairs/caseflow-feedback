@@ -2,7 +2,9 @@ class Feedback < ActiveRecord::Base
   include ApplicationHelper
 
   validates :subject, :username, :feedback, :contact_email, presence: true
-  validates :feedback, length: { maximum: 2000 }, format: { without: /((?<![0-9])[0-9]{3}[- ]?[0-9]{2}[- ]?[0-9]{4}(?![0-9])S?|(?<![0-9])[0-9]{7,8}(?![0-9])C?)/}
+  validates :feedback, length: { maximum: 2000 },
+                       format: { without: /((?<![0-9])[0-9]{3}[- ]?[0-9]{2}[- ]?[0-9]{4}
+                       (?![0-9])S?|(?<![0-9])[0-9]{7,8}(?![0-9])C?)/x }
   validates :contact_email, length: { maximum: 255 }, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
 
   enum status: {
