@@ -7,9 +7,12 @@ $(document).ready(function () {
   var requiredQuestions = ["feedback", "email"];
   var errorMessages = {
     "feedback": "Make sure you’ve filled out the comment box below.",
-    "email":  "Make sure you’ve entered a valid email address below."
+    "email":  "Make sure you’ve entered a valid email address below.",
+    "sensitive": "Your feedback contains text that looks like personally identifiable information. Please remove the text \"{match}\" in order to submit."
   };
   var emailPattern = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+  var sensitivePattern = /(^|[^0-9])([0-9]{3}[- ]?[0-9]{2}[- ]?[0-9]{4}(?![0-9])S?|[0-9]{7,8}(?![0-9])C?)/i;
+  // "/((?<![0-9])[0-9]{3}[- ]?[0-9]{2}[- ]?[0-9]{4}(?![0-9])S?|(?<![0-9])[0-9]{7,8}(?![0-9])C?)/"
 
   function init() {
     initState();
@@ -91,9 +94,21 @@ $(document).ready(function () {
     });
   }
 
+  function validateSensitiveInfo(value) {
+    return !sensitivePattern.test(value);
+  }
+
+  function sensitiveMatch(value) {
+    if (pii = value.match(sensitivePattern)) {
+      return pii[pii.length-1];
+    };
+  }
+
   function validateQuestion(questionName, showError) {
     var questionState = state[questionName];
-    var isValid = !!questionState.value || !questionState.show;
+    var sensitiveSafe = validateSensitiveInfo(questionState.value);
+    var isValid = (!!questionState.value  && sensitiveSafe) || !questionState.show;
+
 
     if (isValid && questionName === "email") {
       isValid = emailPattern.test(questionState.value);
@@ -104,6 +119,10 @@ $(document).ready(function () {
     }
     else if(showError) {
       questionState.error = errorMessages[questionName];
+      if(!sensitiveSafe) {
+        var pii = sensitiveMatch(questionState.value);
+        questionState.error = errorMessages["sensitive"].replace("{match}", pii);
+      }
     }
 
     return isValid;
