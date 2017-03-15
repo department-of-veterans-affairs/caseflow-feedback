@@ -99,16 +99,10 @@ $(document).ready(function () {
   }
 
   function sensitiveMatch(value) {
-<<<<<<< HEAD
     var pii = value.match(sensitivePattern);
     if (pii) {
       return pii[pii.length-1];
     }
-=======
-    if (pii = value.match(sensitivePattern)) {
-      return pii[pii.length-1];
-    };
->>>>>>> c70997d9f9adde8c932b09b64baf4a9a3428b4c9
   }
 
   function validateQuestion(questionName, showError) {
