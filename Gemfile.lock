@@ -7,8 +7,8 @@ GIT
 
 GIT
   remote: https://github.com/department-of-veterans-affairs/caseflow-commons
-  revision: d2498d59171a196b04ba4fa7ebf268428b2cba6d
-  ref: d2498d5917
+  revision: 3e29aac95420d023f0d5c0f76c4d899f131ee9bb
+  ref: 3e29aac95420d023f0d5c0f76c4d899f131ee9bb
   specs:
     caseflow (0.1.6)
       aws-sdk (~> 2)
@@ -70,13 +70,13 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (6.0.3)
     ast (2.3.0)
-    aws-sdk (2.7.13)
-      aws-sdk-resources (= 2.7.13)
-    aws-sdk-core (2.7.13)
+    aws-sdk (2.8.6)
+      aws-sdk-resources (= 2.8.6)
+    aws-sdk-core (2.8.6)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.7.13)
-      aws-sdk-core (= 2.7.13)
+    aws-sdk-resources (2.8.6)
+      aws-sdk-core (= 2.8.6)
     aws-sigv4 (1.0.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -104,7 +104,7 @@ GEM
     cliver (0.3.2)
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
-    d3-rails (4.3.0)
+    d3-rails (4.7.0)
       railties (>= 3.1)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
