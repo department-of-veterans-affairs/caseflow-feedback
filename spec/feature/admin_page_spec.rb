@@ -14,6 +14,7 @@ RSpec.feature "Admin Page " do
   scenario "User who is admin" do
     User.authenticate!(roles: ["System Admin"])
     visit "/admin"
+    expect(page).to have_content("Current Feedback")
     expect(page).to have_content("User")
     expect(page).to have_content("Date")
     expect(page).to have_content("Application")
