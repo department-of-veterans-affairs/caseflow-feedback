@@ -5,14 +5,20 @@ $(document).ready(function () {
   var state = {};
   var questionNames = ["feedback", "veteran_pii", "email"];
   var requiredQuestions = ["feedback", "email"];
-  var errorMessages = {
+  var incompleteErrorMessages = {
     "feedback": "Make sure you’ve filled out the comment box below.",
-    "email":  "Make sure you’ve entered a valid email address below.",
-    "sensitive": "Your feedback contains text that looks like personally identifiable information. Please remove the text \"{match}\" in order to submit."
+    "email":  "Make sure you’ve entered a valid email address below."
+  };
+  var patternErrorMessages = {
+    "feedback": "Your feedback contains text that looks like personally identifiable information. Please remove the text \"{match}\" in order to submit.",
+    "email": "Make sure you’ve entered a valid email address below."
+  };
+   var errorMessages = {
+    "incompleteError": incompleteErrorMessages,
+    "patternError": patternErrorMessages
   };
   var emailPattern = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
-  var sensitivePattern = /(^|[^0-9])([0-9]{3}[- ]?[0-9]{2}[- ]?[0-9]{4}(?![0-9])S?|[0-9]{7,8}(?![0-9])C?)/i;
-  // "/((?<![0-9])[0-9]{3}[- ]?[0-9]{2}[- ]?[0-9]{4}(?![0-9])S?|(?<![0-9])[0-9]{7,8}(?![0-9])C?)/"
+  var feedbackPattern = /(^|[^0-9])([0-9]{3}[- ]?[0-9]{2}[- ]?[0-9]{4}(?![0-9])S?|[0-9]{7,8}(?![0-9])C?)/i;
 
   function init() {
     initState();
@@ -94,36 +100,50 @@ $(document).ready(function () {
     });
   }
 
-  function validateSensitiveInfo(value) {
-    return !sensitivePattern.test(value);
+  function validatePattern(questionName, questionValue) {
+    switch (questionName) {
+      case "feedback":
+        return !feedbackPattern.test(questionValue);
+      case "email":
+        return emailPattern.test(questionValue);
+    }
   }
 
-  function sensitiveMatch(value) {
-    var pii = value.match(sensitivePattern);
-    if (pii) {
-      return pii[pii.length-1];
+  function findOffendingString(questionValue) {
+    var pii = questionValue.match(feedbackPattern);
+    return pii && pii[pii.length-1];
+  }
+
+  function findErrorType(questionName, questionValue) {
+    if(!questionValue) {
+      return "incompleteError";
+    }
+    if(!validatePattern(questionName, questionValue)) {
+      return "patternError";
+    }
+  }
+
+  function errorMessage(errorType, questionName) {
+    if(errorType === "patternError" && questionName === "feedback") {
+      var value = questionValue(questionName);
+      var offendingString = findOffendingString(value);
+      return errorMessages[errorType][questionName].replace("{match}", offendingString);
+    }
+    else {
+      return errorMessages[errorType][questionName];
     }
   }
 
   function validateQuestion(questionName, showError) {
     var questionState = state[questionName];
-    var sensitiveSafe = validateSensitiveInfo(questionState.value);
-    var isValid = (!!questionState.value  && sensitiveSafe) || !questionState.show;
-
-
-    if (isValid && questionName === "email") {
-      isValid = emailPattern.test(questionState.value);
-    }
+    var errorType = findErrorType(questionName, questionState.value);
+    var isValid = !errorType || !questionState.show;
 
     if(isValid) {
       questionState.error = null;
     }
     else if(showError) {
-      questionState.error = errorMessages[questionName];
-      if(!sensitiveSafe) {
-        var pii = sensitiveMatch(questionState.value);
-        questionState.error = errorMessages["sensitive"].replace("{match}", pii);
-      }
+      questionState.error = errorMessage(errorType, questionName);
     }
 
     return isValid;
