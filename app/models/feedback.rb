@@ -1,7 +1,8 @@
 class Feedback < ActiveRecord::Base
   include ApplicationHelper
 
-  PII_PATTERN = /((?<![0-9])[0-9]{3}[- ]?[0-9]{2}[- ]?[0-9]{4}(?![0-9])S?|(?<![0-9])[0-9]{7,8}(?![0-9])C?)/
+  PII_PATTERN = /((?:^|[^0-9]|SS\ )[0-9]{3}[-\ ]?[0-9]{2}[-\ ]?[0-9]{4}(?![0-9])S?|(?:^|[^0-9]|C )
+    [0-9]{1,2}\ ?[0-9]{3}\ ?[0-9]{3}(?![0-9])C?)/x
   EMAIL_PATTERN = /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
   validates :subject, :username, :feedback, :contact_email, presence: true

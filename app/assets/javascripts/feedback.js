@@ -18,7 +18,7 @@ $(document).ready(function () {
     "patternError": patternErrorMessages
   };
   var emailPattern = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
-  var feedbackPattern = /(^|[^0-9])([0-9]{3}[- ]?[0-9]{2}[- ]?[0-9]{4}(?![0-9])S?|[0-9]{7,8}(?![0-9])C?)/i;
+  var feedbackPattern = /((?:^|[^0-9]|SS )[0-9]{3}[- ]?[0-9]{2}[- ]?[0-9]{4}(?![0-9])S?|(?:^|[^0-9]|C )[0-9]{1,2} ?[0-9]{3} ?[0-9]{3}(?![0-9])C?)/;
 
   function init() {
     initState();
