@@ -38,6 +38,13 @@ node {
     stage ('checkout-deploy-repo') {
       sh "git clone https://${env.GIT_CREDENTIAL}@github.com/department-of-veterans-affairs/appeals-deployment"
       dir ('./appeals-deployment/ansible') {
+        if (env.APP_ENV == 'prod') {
+          APP_VERSION = sh (
+            // magical shell script that will find the latest tag for the repository
+            script: "git ls-remote --tags https://${env.GIT_CREDENTIAL}@github.com/department-of-veterans-affairs/caseflow-feedback.git | awk '{print \$2}' | grep -v '{}' | awk -F\"/\" '{print \$0}' | tail -n 1",
+            returnStdout: true
+            ).trim()
+        }
         sh 'git submodule init'
         sh 'git submodule update'
 
