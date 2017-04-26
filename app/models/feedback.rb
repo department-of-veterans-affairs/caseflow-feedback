@@ -21,6 +21,7 @@ class Feedback < ActiveRecord::Base
   APPLICATION_LABELS = {
     "eFolder Express" => "eFolder",
     "Caseflow Dispatch" => "Dispatch",
+    "Caseflow Reader" => "Reader",
     "Caseflow" => "Certification",
     "Caseflow Certification" => "Certification"
   }.freeze
