@@ -32,6 +32,10 @@ class Feedback < ActiveRecord::Base
     labels
   end
 
+  def title
+    'Feedback from ' + username
+  end
+
   def render_issue_template
     GithubIssueRenderer.new(username: username,
                             email: contact_email,
@@ -45,7 +49,7 @@ class Feedback < ActiveRecord::Base
   private
 
   def create_github_issue
-    url = github.create_issue(title: feedback[0..100],
+    url = github.create_issue(title: title,
                               body: render_issue_template,
                               labels: github_labels)
     update_attributes(github_url: url)

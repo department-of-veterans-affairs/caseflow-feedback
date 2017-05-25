@@ -4,6 +4,6 @@ describe GithubIssueRenderer do
     result = renderer.render
     expect(result).to match(/FG666/)
     expect(result).to match(/test@example.com/)
-    expect(result).to match(/wonderful/)
+    expect(result).to_not match(/wonderful/)
   end
 end
