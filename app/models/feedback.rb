@@ -33,7 +33,7 @@ class Feedback < ActiveRecord::Base
   end
 
   def title
-    'Feedback from ' + username
+    "Feedback from " + username
   end
 
   def render_issue_template
