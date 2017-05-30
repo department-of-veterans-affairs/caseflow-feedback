@@ -68,7 +68,7 @@ RSpec.describe Feedback, type: :model do
       result = Feedback.create(feedback).render_issue_template
       expect(result).to match(/alf/)
       expect(result).to match(/test@example.com/)
-      expect(result).to match(/gr8 app/)
+      expect(result).not_to match(/gr8 app/)
     end
   end
 
