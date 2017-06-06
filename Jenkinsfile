@@ -15,7 +15,7 @@ def APP_VERSION = 'HEAD'
 /************************ Common Pipeline boilerplate ************************/
 
 def commonPipeline;
-node {
+node('deploy') {
 
   // withCredentials allows us to expose the secrets in Credential Binding
   // Plugin to get the credentials from Jenkins secrets.
@@ -38,7 +38,6 @@ node {
     stage ('checkout-deploy-repo') {
       sh "git clone https://${env.GIT_CREDENTIAL}@github.com/department-of-veterans-affairs/appeals-deployment"      
       dir ('./appeals-deployment/ansible') {
-        sh "git checkout feature/hot-compatibility-round-2"
         if (env.APP_ENV == 'prod') {
           APP_VERSION = sh (
             // magical shell script that will find the latest tag for the repository
