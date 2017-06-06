@@ -15,7 +15,7 @@ def APP_VERSION = 'HEAD'
 /************************ Common Pipeline boilerplate ************************/
 
 def commonPipeline;
-node('deploy') {
+node {
 
   // withCredentials allows us to expose the secrets in Credential Binding
   // Plugin to get the credentials from Jenkins secrets.
