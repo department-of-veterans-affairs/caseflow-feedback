@@ -36,9 +36,9 @@ node('deploy') {
     // Checkout the deployment repo for the ansible script. This is needed
     // since the deployment scripts are separated from the source code.
     stage ('checkout-deploy-repo') {
-      sh "git clone https://${env.GIT_CREDENTIAL}@github.com/department-of-veterans-affairs/appeals-deployment"
-      sh "git checkout feature/hot-compatibility-round-2"
+      sh "git clone https://${env.GIT_CREDENTIAL}@github.com/department-of-veterans-affairs/appeals-deployment"      
       dir ('./appeals-deployment/ansible') {
+        sh "git checkout feature/hot-compatibility-round-2"
         if (env.APP_ENV == 'prod') {
           APP_VERSION = sh (
             // magical shell script that will find the latest tag for the repository
