@@ -3,7 +3,7 @@ class FeedbackController < ApplicationController
   before_action :verify_access, except: [:new, :create]
 
   def admin
-    @feedback = Feedback.all
+    @feedback = Feedback.paginate(page: params[:page], per_page: 5).order("created_at DESC")
   end
 
   def new
