@@ -1,6 +1,6 @@
 source ENV["GEM_SERVER_URL"] || "https://rubygems.org"
 
-gem "caseflow", git: "https://github.com/department-of-veterans-affairs/caseflow-commons", ref: "3e29aac95420d023f0d5c0f76c4d899f131ee9bb"
+gem "caseflow", git: "https://github.com/department-of-veterans-affairs/caseflow-commons", ref: "ff94bc32a637c77230a3fa5f793e77966ec02c61"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "4.2.7.1"

@@ -1,11 +1,6 @@
 // Add scss includes explicitly here.
 @import 'caseflow_main';
 
-.align-top {
-  vertical-align: top;
-}
-
-
 .cf-logo-image-default {
   background-image: url(asset-path('caseflow-feedback-logo.svg'));
   width: 32px;
@@ -61,8 +56,6 @@ textarea {
   display: inline;
 }
 
-
-
 .pagination {
   font-size: 1.7rem;
   font-weight: 700;
@@ -70,4 +63,35 @@ textarea {
   outline: none;
   padding: 1rem 2rem;
   text-align: center;
+}
+
+.table-width {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.user-col {
+  width: 200px;
+  vertical-align: top;
+}
+
+.date-col {
+  width: 120px;
+  vertical-align: top;
+}
+
+.app-col {
+  width: 160px;
+  vertical-align: top;
+}
+
+.feedback-col {
+  width: 350px;
+  word-wrap: break-word;
+  vertical-align: top;
+}
+
+.issue-col {
+  width: 80px;
+  vertical-align: top;
 }
