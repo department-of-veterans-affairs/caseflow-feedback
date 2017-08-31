@@ -1,14 +1,14 @@
 <div class="cf-app-msg-screen cf-app-segment cf-app-segment--alt">
     <h2>Current Feedback</h2>
-    <table class="usa-table-borderless" summary="Each row represents a feedback">
+    <table class="usa-table-borderless table-width" summary="Each row represents a feedback">
 	<caption hidden>This table shows all feedback submitted.</caption>
 	<thead>
 	    <tr>
-		<th scope="col"><h3>User</h3></th>
-		<th scope="col"><h3>Date</h3></th>
-		<th scope="col"><h3>Application</h3></th>
-		<th scope="col"><h3>Feedback</h3></th>
-		<th scope="col"><h3>Issue</h3></th>
+		<th class="user-col" scope="col"><h3>User</h3></th>
+		<th class="date-col" scope="col"><h3>Date</h3></th>
+		<th class="app-col" scope="col"><h3>Application</h3></th>
+		<th class="feedback-col" scope="col"><h3>Feedback</h3></th>
+		<th class="issue-col"scope="col"><h3>Issue</h3></th>
 	    </tr>
 	</thead>
 
@@ -16,14 +16,14 @@
 	    <% @feedback.each do |feedback| %>
 		<tr>
 		    <% if feedback.contact_email.blank? %>
-			<td class="align-top"><%= feedback.username %></td>
+			<td class="user-col"><%= feedback.username %></td>
 		    <% else %>
-			<td class="align-top"><%= feedback.contact_email %></td>
+			<td class="user-col"><%= feedback.contact_email %></td>
 		    <% end %>
-		    <td class="align-top"><%= feedback.created_at.strftime("%m/%d/%Y") %></td>
-		    <td class="align-top"><%= feedback.subject %></td>
-		    <td class="align-top"><%= feedback.feedback %></td>
-		    <td class="align-top"><%= link_to feedback.issue_number, feedback.github_url, target: "_blank"%>
+		    <td class="date-col"><%= feedback.created_at.strftime("%m/%d/%Y") %></td>
+		    <td class="app-col"><%= feedback.subject %></td>
+		    <td class="feedback-col"><%= feedback.feedback %></td>
+		    <td class="issue-col"><%= link_to feedback.issue_number, feedback.github_url, target: "_blank"%>
 		    </td>
 		</tr>
 	    <% end %>
