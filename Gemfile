@@ -1,6 +1,6 @@
 source ENV["GEM_SERVER_URL"] || "https://rubygems.org"
 
-gem "caseflow", git: "https://github.com/department-of-veterans-affairs/caseflow-commons", ref: "ff94bc32a637c77230a3fa5f793e77966ec02c61"
+gem "caseflow", git: "https://github.com/department-of-veterans-affairs/caseflow-commons", ref: "706ba7bde215f53d96365e3dba217f9a98781f4e"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "4.2.7.1"
@@ -50,6 +50,10 @@ gem "pg", platforms: :ruby
 # Explicitly adding USWDS gem until it"s published and we can
 # include it via commons
 gem "uswds-rails", git: "https://github.com/18F/uswds-rails-gem.git"
+
+gem "redis-rails"
+
+gem "redis-namespace"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console

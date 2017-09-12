@@ -16,10 +16,8 @@ class User
     "#{username} (#{station_id})"
   end
 
-  def can?(thing)
-    return false if roles.nil?
-    return true if roles.include? "System Admin"
-    roles.include? thing
+  def admin?
+    Functions.granted?("System Admin", css_id)
   end
 
   def authenticated?

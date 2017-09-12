@@ -35,6 +35,7 @@ ActiveRecord::Migration.maintain_test_schema!
 module StubbableUser
   module ClassMethods
     def clear_stub!
+      Functions.delete_all_keys!
       @stub = nil
     end
 
@@ -43,6 +44,10 @@ module StubbableUser
     end
 
     def authenticate!(roles: nil)
+      if roles && roles.include?("System Admin")
+        Functions.grant!("System Admin", users: ["DSUSER"])
+      end
+
       self.stub = User.from_session(
         "user" => {
           "id" => "DSUSER",
@@ -56,6 +61,7 @@ module StubbableUser
     end
 
     def unauthenticate!
+      Functions.delete_all_keys!
       self.stub = nil
     end
 

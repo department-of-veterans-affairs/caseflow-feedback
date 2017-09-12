@@ -1,4 +1,7 @@
 require "simplecov"
+require "redis"
+require "redis-namespace"
+
 SimpleCov.start do
   add_filter "lib/fakes"
   add_filter "spec/support"
