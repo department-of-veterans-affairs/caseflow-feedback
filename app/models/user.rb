@@ -17,7 +17,7 @@ class User
   end
 
   def admin?
-    Functions.granted?("System Admin", css_id)
+    Admin.exists?(css_id: css_id)
   end
 
   def authenticated?
