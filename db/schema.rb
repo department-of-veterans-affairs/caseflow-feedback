@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120200303) do
+ActiveRecord::Schema.define(version: 20170913161828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins", force: :cascade do |t|
+    t.string "css_id", null: false
+  end
+
+  add_index "admins", ["css_id"], name: "index_admins_on_css_id", unique: true, using: :btree
 
   create_table "feedback", force: :cascade do |t|
     t.string   "subject"

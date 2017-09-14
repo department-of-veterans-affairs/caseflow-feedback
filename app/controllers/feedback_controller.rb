@@ -1,6 +1,6 @@
 class FeedbackController < ApplicationController
   before_action :verify_authentication
-  before_action :verify_access, except: [:new, :create]
+  before_action :verify_system_admin, except: [:new, :create]
 
   def admin
     @feedback = Feedback.paginate(page: params[:page], per_page: 5).order("created_at DESC")
@@ -27,10 +27,6 @@ class FeedbackController < ApplicationController
   end
 
   private
-
-  def verify_access
-    verify_authorized_roles("System Admin")
-  end
 
   def feedback_params
     params.require(:feedback)
