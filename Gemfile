@@ -51,10 +51,6 @@ gem "pg", platforms: :ruby
 # include it via commons
 gem "uswds-rails", git: "https://github.com/18F/uswds-rails-gem.git"
 
-gem "redis-rails"
-
-gem "redis-namespace"
-
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: :ruby
