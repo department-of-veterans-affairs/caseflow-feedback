@@ -31,10 +31,8 @@ class ApplicationController < ActionController::Base
     redirect_to(ENV["SSO_URL"])
   end
 
-  def verify_authorized_roles(*roles)
-    return true if current_user && roles.all? { |r| current_user.can?(r) }
-    session["return_to"] = request.original_url
-    redirect_to "/unauthorized"
+  def verify_system_admin
+    redirect_to "/unauthorized" unless current_user.admin?
   end
 
   def current_user

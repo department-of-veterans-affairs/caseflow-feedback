@@ -1,9 +1,12 @@
 User.authentication_service = Fakes::AuthenticationService
 
 describe User do
-  let(:session) { { "user" => { "id" => "123", "station_id" => "456" } } }
+  let(:session) { { "user" => { "id" => "DSUSER", "station_id" => "456" } } }
   let(:user) { User.from_session(session) }
-  before { Fakes::AuthenticationService.user_session = nil }
+  before do
+    Fakes::AuthenticationService.user_session = nil
+    User.unauthenticate!
+  end
 
   context "#display_name" do
     subject { user.display_name }
@@ -17,21 +20,16 @@ describe User do
     end
   end
 
-  context "#can?" do
-    subject { user.can?("Do the thing") }
+  context "#admin?" do
+    subject { user.admin? }
 
-    context "when roles are nil" do
+    context "when user is not an admin" do
       before { session["user"]["roles"] = nil }
       it { is_expected.to be_falsey }
     end
 
-    context "when roles don't contain the thing" do
-      before { session["user"]["roles"] = ["Do the other thing!"] }
-      it { is_expected.to be_falsey }
-    end
-
-    context "when roles contains the thing" do
-      before { session["user"]["roles"] = ["Do the thing"] }
+    context "when user is admin" do
+      before { User.authenticate!(roles: ["System Admin"]) }
       it { is_expected.to be_truthy }
     end
   end
