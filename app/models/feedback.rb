@@ -22,6 +22,7 @@ class Feedback < ActiveRecord::Base
     "eFolder Express" => "eFolder",
     "Caseflow Dispatch" => "Dispatch",
     "Caseflow Reader" => "Reader",
+    "Caseflow Hearing Prep" => "Hearing Prep",
     "Caseflow" => "Certification",
     "Caseflow Certification" => "Certification"
   }.freeze
