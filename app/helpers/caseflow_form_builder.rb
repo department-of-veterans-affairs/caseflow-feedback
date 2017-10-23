@@ -30,25 +30,12 @@ class CaseflowFormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
-  def question_legend(options)
-    @template.content_tag :legend, class: "question-label" do
-      label_content(options)
-    end
-  end
-
   def question_label(attribute, options)
     label(attribute, label_content(options), class: "question-label")
   end
 
   def label_content(options)
-    if options[:secondary]
-      "<strong></strong><em>#{options[:label]}</em>".html_safe
-    elsif options[:warning]
-      "<strong>#{options[:question_number]}</strong> #{options[:label]}<br/>\
-      <br>#{warning_container(options[:warning])}<br/><br/>".html_safe
-    else
-      "<strong>#{options[:question_number]}</strong> #{options[:label]}".html_safe
-    end
+    "<strong>#{options[:question_number]}</strong> #{options[:label]}".html_safe
   end
 
   def trim_options(options)
@@ -57,9 +44,5 @@ class CaseflowFormBuilder < ActionView::Helpers::FormBuilder
 
   def error_container
     @template.content_tag(:span, class: "usa-input-error-message") {}
-  end
-
-  def warning_container(options)
-    @template.content_tag(:span, class: "cf-required") { options }
   end
 end
