@@ -7,20 +7,26 @@
     <div class="cf-app-segment cf-app-segment--alt">
 
       <h2>Tell us about your experience with <%= session[:subject] %>.</h2>
+      <p>What's working well? What's not working? Your comments will help us improve Caseflow for everyone.</p>
       <div class="feedback-in">
         <%= f.text_area :feedback,
           question_name: "feedback", maxlength: 2000,
-          label: "What's working well? What's not working? Your comments will help us improve Caseflow for everyone.",
-          warning: "Please refrain from putting PII in this box" %>
+          label: "Add your comments. Please don’t put PII here." %>
         <%= f.text_field :veteran_pii,
-          question_name: "veteran_pii", label: "If you are having an issue with a specific case number or Veteran ID please let us know. It's safe to put PII in this field." %>
+          question_name: "veteran_pii", label: "If you are having an issue with a specific case number or Veteran ID, please let us know. It's safe to put PII in this field." %>
         <%= f.text_field :contact_email,
           question_name: "email", label: "Contact email" %>
       </div>
     </div>
     <div class="cf-app-segment">
-      <a class="cf-push-left cf-submit" href="<%= app_display_url %>" onClick="ga('send', 'event', { eventCategory: 'BackToOrigin', eventAction: 'ClickCancel', eventLabel: 'BackToOrigin', eventValue: 1});">Cancel</a>
-      <%= f.submit "Send Feedback", class: "cf-push-right cf-submit", :onclick => "ga('send', 'event', { eventCategory: 'SubmitFeedback', eventAction: 'ClickSubmitFeedback', eventLabel: 'SubmitFeedback', eventValue: 1});" %>
+      <div class="cf-push-row">
+        <div class="cf-push-left">
+          <a class="cf-submit" href="<%= app_display_url %>" onClick="ga('send', 'event', { eventCategory: 'BackToOrigin', eventAction: 'ClickCancel', eventLabel: 'BackToOrigin', eventValue: 1});">Cancel</a>
+        </div>
+        <div class="cf-push-right">
+          <%= f.submit "Send Feedback", class: "cf-push-right cf-submit", :onclick => "ga('send', 'event', { eventCategory: 'SubmitFeedback', eventAction: 'ClickSubmitFeedback', eventLabel: 'SubmitFeedback', eventValue: 1});" %>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
