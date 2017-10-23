@@ -19,6 +19,10 @@ textarea {
   width: 46rem;
 }
 
+label {
+  color: $color-gray-dark;
+}
+
 .cf-push-row {
   .cf-push-left {
     line-height: 5;
