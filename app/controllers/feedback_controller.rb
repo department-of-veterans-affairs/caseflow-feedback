@@ -4,6 +4,7 @@ class FeedbackController < ApplicationController
 
   def admin
     @feedback = Feedback.paginate(page: params[:page], per_page: 5).order("created_at DESC")
+    @count = Feedback.where("DATE(created_at) = ?", Time.zone.today).count
   end
 
   def new
@@ -25,11 +26,6 @@ class FeedbackController < ApplicationController
       render "new"
     end
   end
-
-  def count
-    @count = Feedback.where("DATE(created_at) = ?", Time.zone.today).count
-  end
-  helper_method :count
 
   private
 
