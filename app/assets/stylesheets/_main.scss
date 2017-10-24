@@ -19,10 +19,14 @@ textarea {
   width: 46rem;
 }
 
-.cf-form-textarea,
-.cf-form-textinput {
-  max-width: 47.9rem;
-  width: 47.9rem;
+label {
+  color: $color-gray-dark;
+}
+
+.cf-push-row {
+  .cf-push-left {
+    line-height: 5;
+  }
 }
 
 .italic {
@@ -43,7 +47,6 @@ textarea {
 }
 
 .feedback-in {
-  width: 46rem;
   height: auto;
   margin-top: 2rem;
   margin-bottom: 0;
