@@ -26,8 +26,8 @@ class FeedbackController < ApplicationController
     end
   end
 
-   def count 
-    @count = Feedback.where("DATE(created_at) = ?", Date.today).count
+  def count
+    @count = Feedback.where("DATE(created_at) = ?", Time.zone.today).count
   end
   helper_method :count
 

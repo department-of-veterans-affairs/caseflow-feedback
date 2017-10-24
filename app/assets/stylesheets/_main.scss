@@ -76,29 +76,6 @@ textarea {
 }
 
 .user-col {
- width: 200px;
- vertical-align: top;
-}
-
-.date-col {
- width: 120px;
- vertical-align: top;
-}
-
-.app-col {
- width: 160px;
- vertical-align: top;
-}
-
-.feedback-col {
- width: 350px;
- word-wrap: break-word;
- vertical-align: top;
-}
-
-.issue-col {
- width: 80px;
- vertical-align: top;
   width: 200px;
   vertical-align: top;
   padding-bottom: 30px;
@@ -127,4 +104,8 @@ textarea {
   width: 80px;
   vertical-align: top;
   padding-bottom: 30px;
+}
+
+.count {
+  font-weight: bold;
 }
