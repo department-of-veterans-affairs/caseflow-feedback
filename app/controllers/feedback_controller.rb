@@ -1,9 +1,10 @@
 class FeedbackController < ApplicationController
   before_action :verify_authentication
-  before_action :verify_system_admin, except: [:new, :create]
+  before_action :verify_system_admin, except: [:new, :create, :count]
 
   def admin
     @feedback = Feedback.paginate(page: params[:page], per_page: 5).order("created_at DESC")
+    @count = Feedback.where("DATE(created_at) = ?", Time.zone.today).count
   end
 
   def new
