@@ -4,8 +4,14 @@
     <p class="cf-msg-screen-text"> Your feedback has been successfully recorded. <a href="/" onClick="ga('send', 'event', { eventCategory: 'Home', eventAction: 'ClickSendInMore', eventLabel: 'SendInMore', eventValue: 1});"> Send more feedback</a> at any time. </p>
   </div>
   <div class="cf-app-segment">
-    <a onClick="ga('send', 'event', { eventCategory: 'BackToOrigin', eventAction: 'ClickBackTo', eventLabel: 'BackToOrigin', eventValue: 1});">
-      <button class="cf-submit cf-push-right">Close Feedback</button>
+    <a href="#" onClick="closeConfirmationWindow()">
+      <button class="cf-submit cf-push-right" id="close-feedback">Close Feedback</button>
    </a>
   </div>
 </div>
+<script>
+function closeConfirmationWindow(){
+  ga('send', 'event', { eventCategory: 'BackToOrigin', eventAction: 'ClickBackTo', eventLabel: 'BackToOrigin', eventValue: 1});
+  window.close();
+}
+</script>
