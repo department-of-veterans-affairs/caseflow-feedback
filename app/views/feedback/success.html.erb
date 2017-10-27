@@ -1,13 +1,21 @@
 <div>
   <div class="cf-app-segment cf-app-segment--alt">
-    <h1>Thanks for your feedback!</h1>
-    <p> Your feedback has been recorded. We appreciate your comments! <a href="/" onClick="ga('send', 'event', { eventCategory: 'Home', eventAction: 'ClickSendInMore', eventLabel: 'SendInMore', eventValue: 1});"> Send in more feedback</a> at any time. </p>
+    <h1 class="cf-msg-screen-heading">Thank you</h1>
+    <p class="cf-msg-screen-text"> Your feedback has been successfully recorded. <a href="/" onClick="ga('send', 'event', { eventCategory: 'Home', eventAction: 'ClickSendInMore', eventLabel: 'SendInMore', eventValue: 1});"> Send more feedback</a> at any time. </p>
   </div>
   <div class="cf-app-segment">
-    <a href='<%= app_display_url %>' onClick="ga('send', 'event', { eventCategory: 'BackToOrigin', eventAction: 'ClickBackTo', eventLabel: 'BackToOrigin', eventValue: 1});">
-      <button class="cf-submit cf-push-right" >Back to <%= session[:subject] %></button>
+    <a href="#" onClick="closeConfirmationWindow()">
+      <button class="cf-submit cf-push-right" id="close-feedback">Close Feedback</button>
    </a>
   </div>
 </div>
-
-
+<script>
+// This hides the button if the feedback window was not opened with JS
+if (!window.opener) {
+  document.getElementById("close-feedback").style.display = "none";
+}
+function closeConfirmationWindow(){
+  ga('send', 'event', { eventCategory: 'BackToOrigin', eventAction: 'ClickBackTo', eventLabel: 'BackToOrigin', eventValue: 1});
+  window.close();
+}
+</script>
