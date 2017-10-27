@@ -10,6 +10,10 @@
   </div>
 </div>
 <script>
+// This hides the button if the feedback window was not opened with JS
+if (!window.opener) {
+  document.getElementById("close-feedback").style.display = "none";
+}
 function closeConfirmationWindow(){
   ga('send', 'event', { eventCategory: 'BackToOrigin', eventAction: 'ClickBackTo', eventLabel: 'BackToOrigin', eventValue: 1});
   window.close();

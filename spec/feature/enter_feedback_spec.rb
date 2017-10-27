@@ -19,7 +19,6 @@ RSpec.feature "Enter feedback" do
     fill_in "Contact email", with: "email@va.gov"
     click_on "Send Feedback"
     expect(page).to have_content("Thank you")
-    expect(page).to have_content("Close Feedback")
     expect(Feedback.last.feedback).to eq("Feedback")
     expect(Feedback.last.veteran_pii).to eq("Veteran PII")
     expect(Feedback.last.contact_email).to eq("email@va.gov")
@@ -33,7 +32,6 @@ RSpec.feature "Enter feedback" do
     expect(Feedback.last.veteran_pii).to eq("Veteran PII Info")
     expect(Feedback.last.contact_email).to eq("fk@va.gov")
     expect(page).to have_content("Thank you")
-    expect(page).to have_content("Close Feedback")
   end
 
   scenario "Validate Input Fields" do
