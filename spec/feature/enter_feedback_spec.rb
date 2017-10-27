@@ -18,12 +18,11 @@ RSpec.feature "Enter feedback" do
     fill_in "If you are having an issue", with: "Veteran PII"
     fill_in "Contact email", with: "email@va.gov"
     click_on "Send Feedback"
-    expect(page).to have_content("Thanks for your feedback!")
-    expect(page).to have_content("Back to Caseflow")
+    expect(page).to have_content("Thank you")
     expect(Feedback.last.feedback).to eq("Feedback")
     expect(Feedback.last.veteran_pii).to eq("Veteran PII")
     expect(Feedback.last.contact_email).to eq("email@va.gov")
-    click_on "Send in more feedback"
+    click_on "Send more feedback"
     expect(page).to have_content("Tell us about your experience with Caseflow")
     fill_in "Add your comments", with: "Feedback Text"
     fill_in "If you are having an issue", with: "Veteran PII Info"
@@ -32,8 +31,7 @@ RSpec.feature "Enter feedback" do
     expect(Feedback.last.feedback).to eq("Feedback Text")
     expect(Feedback.last.veteran_pii).to eq("Veteran PII Info")
     expect(Feedback.last.contact_email).to eq("fk@va.gov")
-    expect(page).to have_content("Thanks for your feedback!")
-    page.should have_link("Back to Caseflow", href: "caseflow.ds.va.gov")
+    expect(page).to have_content("Thank you")
   end
 
   scenario "Validate Input Fields" do
