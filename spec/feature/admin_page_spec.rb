@@ -30,8 +30,8 @@ RSpec.feature "Admin Page " do
     fill_in "Add your comments", with: "Admin Page Spec"
     fill_in "Contact email", with: "fk@va.gov"
     click_on "Send Feedback"
-    expect(page).to have_content("Thanks for your feedback!")
-    click_on "Send in more feedback"
+    expect(page).to have_content("Thank you")
+    click_on "Send more feedback"
     expect(page).to have_content("Tell us about your experience with Caseflow")
     User.authenticate!(roles: ["System Admin"])
     visit "/admin"
