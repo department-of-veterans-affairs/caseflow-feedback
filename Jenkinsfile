@@ -36,12 +36,17 @@ node('deploy') {
     // Checkout the deployment repo for the ansible script. This is needed
     // since the deployment scripts are separated from the source code.
     stage ('checkout-deploy-repo') {
-      sh "git clone https://${env.GIT_CREDENTIAL}@github.com/department-of-veterans-affairs/appeals-deployment"      
+      sh "git clone https://${env.GIT_CREDENTIAL}@github.com/department-of-veterans-affairs/appeals-deployment"
       dir ('./appeals-deployment/ansible') {
         if (env.APP_ENV == 'prod') {
           APP_VERSION = sh (
             // magical shell script that will find the latest tag for the repository
-            script: "git ls-remote --tags https://${env.GIT_CREDENTIAL}@github.com/department-of-veterans-affairs/caseflow-feedback.git | awk '{print \$2}' | grep -v '{}' | awk -F\"/\" '{print \$0}' | tail -n 1",
+            // 1. get remote tags + shas
+            // 2. drop the shas
+            // 3. get only manual or stable tags
+            // 4. sort by date column
+            // 5. get the last line
+            script: "git ls-remote --tags https://${env.GIT_CREDENTIAL}@github.com/department-of-veterans-affairs/caseflow-feedback.git | awk '{print \$2}' | grep -E 'manual|stable' | sort -t/ -nk4 | awk -F\"/\" '{print \$0}' | tail -n 1",
             returnStdout: true
             ).trim()
         }
