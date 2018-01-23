@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 User.authentication_service = Fakes::AuthenticationService
 
 describe User do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe SlackService do
   before do
     ENV["SLACK_WEBHOOK_URL"] = "test.slack.url"
