@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -22,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def verify_authentication
-    return true if current_user && current_user.authenticated?
+    return true if current_user&.authenticated?
     # TODO(alex): right now, in demo and local dev, current_user
     # will return a stub user session and never be nil, so we'll
     # never hit the line below. this could probably be refactored

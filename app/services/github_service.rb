@@ -1,8 +1,9 @@
 # frozen_string_literal: true
+
 require "erb"
 
 class GithubService
-  REPO = "department-of-veterans-affairs/appeals-support".freeze
+  REPO = "department-of-veterans-affairs/appeals-support"
 
   def create_issue(title:, body:, labels:)
     issue = Octokit.create_issue(REPO, title, body, labels: labels)
