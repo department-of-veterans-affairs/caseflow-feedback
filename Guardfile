@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
@@ -25,6 +27,6 @@
 #  * 'just' rspec: 'rspec'
 
 guard :rspec, cmd: "bundle exec rspec" do
-  watch(%r{spec/.*/}) { 'spec' }
-  watch(%r{app/.*/}) { 'spec' }
+  watch(%r{spec/.*/}) { "spec" }
+  watch(%r{app/.*/}) { "spec" }
 end
