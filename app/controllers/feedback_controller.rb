@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FeedbackController < ApplicationController
   before_action :verify_authentication
   before_action :verify_system_admin, except: [:new, :create, :count]
