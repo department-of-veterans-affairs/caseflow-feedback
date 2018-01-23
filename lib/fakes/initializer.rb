@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fakes::Initializer
   def self.development!
     User.authentication_service = Fakes::AuthenticationService

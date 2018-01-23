@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User
   include ActiveModel::Model
   # Ephemeral values obtained from CSS on auth. Stored in user's session

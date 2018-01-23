@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CaseflowFormBuilder < ActionView::Helpers::FormBuilder
   def text_field(attribute, options = {})
     options["aria-disabled"] = true if options[:readonly]

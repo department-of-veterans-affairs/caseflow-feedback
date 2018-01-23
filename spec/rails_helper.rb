@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path("../../config/environment", __FILE__)
@@ -44,14 +46,15 @@ module StubbableUser
     end
 
     def authenticate!(roles: nil)
-      Admin.create(css_id: "DSUSER") if roles && roles.include?("System Admin")
+      Admin.create(css_id: "DSUSER") if roles&.include?("System Admin")
 
       self.stub = User.from_session(
         "user" => {
           "id" => "DSUSER",
           "station_id" => "283",
           "roles" => roles || ["Certify Appeal"]
-        })
+        }
+      )
     end
 
     def current_user
