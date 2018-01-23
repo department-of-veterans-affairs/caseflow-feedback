@@ -15,7 +15,7 @@ end
 
 # use gzip for the '/metrics' route, since it can get big.
 use Rack::Deflater,
-    if: -> (env, _status, _headers, _body) { env["PATH_INFO"] == "/metrics" }
+    if: ->(env, _status, _headers, _body) { env["PATH_INFO"] == "/metrics" }
 
 # traces all HTTP requests
 use Prometheus::Client::Rack::Collector

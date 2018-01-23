@@ -31,7 +31,7 @@ class FeedbackController < ApplicationController
 
   def feedback_params
     params.require(:feedback)
-          .permit(:feedback, :contact_email, :veteran_pii)
-          .merge(subject: session[:subject], username: current_user.display_name)
+      .permit(:feedback, :contact_email, :veteran_pii)
+      .merge(subject: session[:subject], username: current_user.display_name)
   end
 end
