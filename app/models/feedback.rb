@@ -25,6 +25,7 @@ class Feedback < ActiveRecord::Base
     "Caseflow Dispatch" => "Dispatch",
     "Caseflow Reader" => "Reader",
     "Caseflow Hearing Prep" => "Hearing Prep",
+    "Caseflow Intake" => "Intake",
     "Caseflow" => "Certification",
     "Caseflow Certification" => "Certification"
   }.freeze
