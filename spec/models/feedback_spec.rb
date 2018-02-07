@@ -76,12 +76,12 @@ RSpec.describe Feedback, type: :model do
 
   context "#github_labels" do
     it "it recognizes the subject" do
-      labels = "Product Support Team, Source - Feedback, Current Sprint, eFolder"
+      labels = "Source - Feedback, Current Sprint, eFolder"
       expect(Feedback.create(feedback).github_labels).to eq labels
     end
 
     it "it does not recognize the subject" do
-      labels = "Product Support Team, Source - Feedback, Current Sprint"
+      labels = "Source - Feedback, Current Sprint"
       feedback = Feedback.create(subject: "other", username: "alf", feedback: "gr8 app")
       expect(feedback.github_labels).to eq labels
     end
