@@ -26,12 +26,13 @@ class Feedback < ActiveRecord::Base
     "Caseflow Reader" => "Reader",
     "Caseflow Hearing Prep" => "Hearing Prep",
     "Caseflow Intake" => "Intake",
-    "Caseflow" => "Certification",
+    "Caseflow Queue" => "Queue",
+    "Caseflow" => "Caseflow",
     "Caseflow Certification" => "Certification"
   }.freeze
 
   def github_labels
-    labels = "Product Support Team, Source - Feedback, Current Sprint"
+    labels = "Source - Feedback, Current Sprint"
     labels += ", " + APPLICATION_LABELS[subject] if APPLICATION_LABELS[subject]
     labels
   end
