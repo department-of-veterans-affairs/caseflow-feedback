@@ -3,10 +3,10 @@
 # rubocop:disable Metrics/LineLength
 source ENV["GEM_SERVER_URL"] || "https://rubygems.org"
 
-gem "caseflow", git: "https://github.com/department-of-veterans-affairs/caseflow-commons", ref: "706ba7bde215f53d96365e3dba217f9a98781f4e"
+gem "caseflow", git: "https://github.com/department-of-veterans-affairs/caseflow-commons", ref: "9c0f6914e01516ee9bd62623e75e93e0b356988d"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "4.2.7.1"
+gem "rails", "5.0"
 # Use sqlite3 as the database for Active Record
 gem "activerecord-jdbcsqlite3-adapter", platforms: :jruby
 gem "sqlite3", platforms: [:ruby, :mswin, :mingw, :mswin, :x64_mingw]
