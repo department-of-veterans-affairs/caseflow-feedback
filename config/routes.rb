@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+resource :feedback
+
+  root 'feedback#new'
+
+  get "unauthorized" => "application#unauthorized"
+  get "health-check" => "health_checks#show"
+  get "admin" => "feedback#admin"
+  get 'logout', to: 'application#logout'
+
 end
