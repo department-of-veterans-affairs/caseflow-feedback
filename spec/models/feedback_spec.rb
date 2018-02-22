@@ -30,15 +30,15 @@ RSpec.describe Feedback, type: :model do
       f[:feedback] = "1234567"
       expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
       f[:feedback] = "1234567890"
-      expect { Feedback.create!(f) }.not_to raise_error 
+      expect { Feedback.create!(f) }.not_to raise_error
       f[:feedback] = "123456"
-      expect { Feedback.create!(f) }.not_to raise_error 
+      expect { Feedback.create!(f) }.not_to raise_error
       f[:feedback] = "2022007317"
-      expect { Feedback.create!(f) }.not_to raise_error 
+      expect { Feedback.create!(f) }.not_to raise_error
       f[:feedback] = "202-200-7317"
-      expect { Feedback.create!(f) }.not_to raise_error 
+      expect { Feedback.create!(f) }.not_to raise_error
       f[:feedback] = "(202) 200-7317"
-      expect { Feedback.create!(f) }.not_to raise_error 
+      expect { Feedback.create!(f) }.not_to raise_error
     end
   end
 
@@ -54,7 +54,7 @@ RSpec.describe Feedback, type: :model do
       f[:contact_email] = "yes@sign"
       expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
       f[:contact_email] = "yes@sign.com"
-      expect { Feedback.create!(f) }.not_to raise_error 
+      expect { Feedback.create!(f) }.not_to raise_error
     end
   end
 
