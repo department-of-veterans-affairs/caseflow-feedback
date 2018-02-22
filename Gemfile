@@ -6,7 +6,7 @@ source ENV["GEM_SERVER_URL"] || "https://rubygems.org"
 gem "caseflow", git: "https://github.com/department-of-veterans-affairs/caseflow-commons", ref: "5e6830534124f578f43c619c8620c0560365aa55"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "5.0"
+gem "rails", "5.1.5"
 # Use sqlite3 as the database for Active Record
 gem "activerecord-jdbcsqlite3-adapter", platforms: :jruby
 gem "sqlite3", platforms: [:ruby, :mswin, :mingw, :mswin, :x64_mingw]
