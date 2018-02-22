@@ -3,7 +3,7 @@
 # rubocop:disable Metrics/LineLength
 source ENV["GEM_SERVER_URL"] || "https://rubygems.org"
 
-gem "caseflow", git: "https://github.com/department-of-veterans-affairs/caseflow-commons", ref: "9c0f6914e01516ee9bd62623e75e93e0b356988d"
+gem "caseflow", git: "https://github.com/department-of-veterans-affairs/caseflow-commons", ref: "5e6830534124f578f43c619c8620c0560365aa55"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "5.0"
