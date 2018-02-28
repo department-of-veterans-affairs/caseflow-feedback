@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Feedback < ActiveRecord::Base
+class Feedback < ApplicationRecord
   include ApplicationHelper
 
   PII_PATTERN = /((?:^|[^0-9]|SS\ )[0-9]{3}[-\ ]?[0-9]{2}[-\ ]?[0-9]{4}(?![0-9])S?|(?:^|[^0-9]|C )
