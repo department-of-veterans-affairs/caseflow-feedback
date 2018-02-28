@@ -1,3 +1,4 @@
+
 # frozen_string_literal: true
 
 describe SlackService do
@@ -8,7 +9,7 @@ describe SlackService do
   it "posts to http" do
     slack_service = SlackService.new(current_domain: "www.domain.com",
                                      subject: "feedback_subject")
-    slack_service.http_service.stub(:post).and_return("response")
+    allow(slack_service.http_service).to receive(:post).and_return("response")
     response = slack_service.send_new_feedback_notification
     expect(response).to eq("response")
   end
