@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -17,20 +18,21 @@ ActiveRecord::Schema.define(version: 20170913161828) do
 
   create_table "admins", force: :cascade do |t|
     t.string "css_id", null: false
-    t.index ["css_id"], name: "index_admins_on_css_id", unique: true
   end
 
+  add_index "admins", ["css_id"], name: "index_admins_on_css_id", unique: true, using: :btree
+
   create_table "feedback", force: :cascade do |t|
-    t.string "subject"
-    t.string "username"
-    t.text "feedback"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "admin_note"
-    t.integer "status", default: 0
-    t.text "contact_email"
-    t.string "github_url"
-    t.text "veteran_pii"
+    t.string   "subject"
+    t.string   "username"
+    t.text     "feedback"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.text     "admin_note"
+    t.integer  "status",        default: 0
+    t.text     "contact_email"
+    t.string   "github_url"
+    t.text     "veteran_pii"
   end
 
 end
