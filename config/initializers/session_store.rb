@@ -1,5 +1,4 @@
 # Be sure to restart your server when you modify this file.
-
 options = {
   key: '_caseflow_session',
   secure: Rails.env.production?,
