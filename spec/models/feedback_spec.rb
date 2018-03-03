@@ -14,21 +14,21 @@ RSpec.describe Feedback, type: :model do
     it "must prevent sensitive leak" do
       f = feedback.clone
       f[:feedback] = "123456789"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
+      expect { Feedback.create!(f) }.to raise_error
       f[:feedback] = "123456789S"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
+      expect { Feedback.create!(f) }.to raise_error
       f[:feedback] = "123 45 6789"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
+      expect { Feedback.create!(f) }.to raise_error
       f[:feedback] = "123-45-6789"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
+      expect { Feedback.create!(f) }.to raise_error
       f[:feedback] = "01234567C"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
+      expect { Feedback.create!(f) }.to raise_error
       f[:feedback] = "1234567C"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
+      expect { Feedback.create!(f) }.to raise_error
       f[:feedback] = "01234567"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
+      expect { Feedback.create!(f) }.to raise_error
       f[:feedback] = "1234567"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
+      expect { Feedback.create!(f) }.to raise_error
       f[:feedback] = "1234567890"
       expect { Feedback.create!(f) }.not_to raise_error
       f[:feedback] = "123456"
@@ -44,15 +44,15 @@ RSpec.describe Feedback, type: :model do
 
   context "#contact_email" do
     it "is required" do
-      expect { Feedback.create!(feedback_no_email) }.to raise_error ActiveRecord::RecordInvalid
+      expect { Feedback.create!(feedback_no_email) }.to raise_error
     end
 
     it "must have email in valid format" do
       f = feedback_no_email.clone
       f[:contact_email] = "no_at_sign"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
+      expect { Feedback.create!(f) }.to raise_error
       f[:contact_email] = "yes@sign"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
+      expect { Feedback.create!(f) }.to raise_error
       f[:contact_email] = "yes@sign.com"
       expect { Feedback.create!(f) }.not_to raise_error
     end
