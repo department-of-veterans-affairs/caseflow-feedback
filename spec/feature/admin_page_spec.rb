@@ -28,7 +28,7 @@ RSpec.feature "Admin Page " do
     visit "/feedback/new"
     expect(page).to have_content("Tell us about your experience with Caseflow")
     expect(page).to have_css("#feedback_feedback")
-    page.should have_link("Cancel")
+    expect(page).to have_link("Cancel")
     fill_in "Add your comments", with: "Admin Page Spec"
     fill_in "Contact email", with: "fk@va.gov"
     click_on "Send Feedback"

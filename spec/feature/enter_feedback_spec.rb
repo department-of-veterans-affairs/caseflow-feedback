@@ -15,7 +15,7 @@ RSpec.feature "Enter feedback" do
     expect(page).to have_content("Your comments will help us improve Caseflow for everyone.")
     expect(page).to have_content("Contact email")
     expect(page).to have_css("#feedback_feedback")
-    page.should have_link("Cancel")
+    expect(page).to have_link("Cancel")
     fill_in "Add your comments", with: "Feedback"
     fill_in "If you are having an issue", with: "Veteran PII"
     fill_in "Contact email", with: "email@va.gov"
