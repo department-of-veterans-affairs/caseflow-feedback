@@ -85,26 +85,32 @@ label {
 }
 
 .date-col {
-  width: 120px;
+  width: 90px;
   vertical-align: top;
   padding-bottom: 30px;
 }
 
 .app-col {
-  width: 160px;
+  width: 120px;
   vertical-align: top;
   padding-bottom: 30px;
 }
 
 .feedback-col {
-  width: 350px;
+  width: 300px;
   word-wrap: break-word;
   vertical-align: top;
   padding-bottom: 30px;
 }
 
 .issue-col {
-  width: 80px;
+  width: 60px;
+  vertical-align: top;
+  padding-bottom: 30px;
+}
+
+.pii-col {
+  width: 100px;
   vertical-align: top;
   padding-bottom: 30px;
 }
