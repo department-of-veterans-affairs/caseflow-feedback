@@ -13,6 +13,7 @@
 		<th class="app-col" scope="col"><h3>Application</h3></th>
 		<th class="feedback-col" scope="col"><h3>Feedback</h3></th>
 		<th class="issue-col"scope="col"><h3>Issue</h3></th>
+		<th class="pii-col"scope="col"><h3>PII</h3></th>
 	    </tr>
 	</thead>
 
@@ -28,6 +29,7 @@
 		    <td class="app-col"><%= feedback.subject %></td>
 		    <td class="feedback-col"><%= feedback.feedback %></td>
 		    <td class="issue-col"><%= link_to feedback.issue_number, feedback.github_url, target: "_blank"%>
+		    <td class="pii-col"><%= feedback.veteran_pii %></td>
 		    </td>
 		</tr>
 	    <% end %>
