@@ -299,6 +299,12 @@ dd {
   }
 }
 
+// Quick fix to property count lint
+%overlay {
+  background: $color-white;
+  z-index: 1;
+  position: absolute;
+}
 
 .cf-dropdown-menu {
   @include unstyled-list();
@@ -346,35 +352,14 @@ dd {
   }
 }
 
+//------ Modals --------*/
 
-// ===========================*
-// Application progress bar  *
-// ============================*/
-.cf-progress-bar {
-  width: 100%;
-  display: table;
-  table-layout: fixed;
-  font-size: 18px;
-}
 
-.cf-progress-bar-section {
-  display: table-cell;
-  padding: 4px;
-}
-
-.cf-progress-bar-activated {
+// don't trip the accessibility warning for white on white, even if title isn't visible
+svg title {
   color: $color-gray-dark;
-  font-weight: 700;
-  padding-bottom: 6px;
-  border-bottom: 7px solid $color-gray-dark;
 }
 
-.cf-progress-bar-not-activated {
-  color: $color-gray-dark;
-  font-weight: 700;
-  padding-bottom: 6px;
-  border-bottom: 7px solid $color-gray-light;
-}
 
 // ===========================*
 // Application navigation bar  *
@@ -916,19 +901,118 @@ fieldset {
     box-shadow: 0 0 0 2px $color-white, 0 0 0 3px $color-gray-medium;
   }
 }
+//---------------------------
+// Date picker overrides
+//----------------------------*/
+.ui-datepicker {
+  background: $cf-background;
+  box-shadow: 0 0 30px rgba($color-base, .8);
 
-.cf-login-input {
-  // This important can be removed when the latest USWDS
-  // are merged into the gem we use.
-  // scss-lint:disable ImportantRule
-  display: inline !important;
-  // scss-lint:enable ImportantRule
+  &-header {
+    background: $color-gray;
+    color: $color-white;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    width: 100%;
+  }
+
+  &-title {
+    font-weight: bold;
+  }
+
+  &-prev,
+  &-next {
+    color: $color-white;
+    cursor: pointer;
+    font-size: .85em;
+    line-height: 1.6;
+    position: absolute;
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+
+  &-prev {
+    left: 1rem;
+  }
+
+  &-next {
+    right: 1rem;
+  }
+
+  &-calendar {
+    margin: 0;
+
+    th {
+      background: $color-gray-light;
+      color: $color-gray-dark;
+      padding: 1rem;
+      border-color: $color-gray;
+
+      &:first-child {
+        border-left-color: $color-gray-light;
+      }
+
+      &:last-child {
+        border-right-color: $color-gray-light;
+      }
+    }
+
+    td {
+      background: $cf-background;
+      border-color: $color-gray-light;
+      padding: 0;
+      text-align: right;
+    }
+
+    .ui-state-default {
+      display: block;
+      padding: 1rem;
+    }
+  }
 }
 
-[id=username_input_id] ~ .cf-txt-example {
-  margin-left: rem(20px);
+.cf-icon-alert {
+  margin-right: .25em;
+  vertical-align: -.25ex;
+  width: 1em;
+  height: 1em;
+
+  path {
+    fill: $color-secondary;
+  }
 }
 
+.icon-loading-front {
+  @include animation(backwardspin 9s linear infinite);
+}
+
+.icon-loading-back {
+  @include animation(spin 9s linear infinite);
+  margin-left: -33px;
+}
+
+@include keyframes(spin) {
+  from {
+    @include transform(rotate(0deg));
+  }
+
+  to {
+    @include transform(rotate(360deg));
+  }
+}
+
+@include keyframes(backwardspin) {
+  from {
+    @include transform(scale(1) rotate(-30deg));
+  }
+
+  to {
+    @include transform(scale(1) rotate(-390deg));
+  }
+}
 
 
 .cf-form-checkbox,
@@ -964,7 +1048,6 @@ button {
       background: image-url('icons/loading-pill.svg') center center no-repeat;
     }
   }
-
 
   &.cf-feedback {
     .cf-loading-icon-front {
