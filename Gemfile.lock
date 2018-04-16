@@ -7,10 +7,10 @@ GIT
 
 GIT
   remote: https://github.com/department-of-veterans-affairs/caseflow-commons
-  revision: 5e6830534124f578f43c619c8620c0560365aa55
-  ref: 5e6830534124f578f43c619c8620c0560365aa55
+  revision: 8f6e7d02e227a426cbafce574769cd49b220c3bf
+  branch: issue4932
   specs:
-    caseflow (0.3.4)
+    caseflow (0.3.6)
       aws-sdk (~> 2.10)
       bourbon (= 4.2.7)
       d3-rails
@@ -72,13 +72,13 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (8.0.0)
     ast (2.3.0)
-    aws-sdk (2.11.2)
-      aws-sdk-resources (= 2.11.2)
-    aws-sdk-core (2.11.2)
+    aws-sdk (2.11.33)
+      aws-sdk-resources (= 2.11.33)
+    aws-sdk-core (2.11.33)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.11.2)
-      aws-sdk-core (= 2.11.2)
+    aws-sdk-resources (2.11.33)
+      aws-sdk-core (= 2.11.33)
     aws-sigv4 (1.0.2)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
@@ -107,7 +107,7 @@ GEM
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
-    d3-rails (4.10.2)
+    d3-rails (4.13.0)
       railties (>= 3.1)
     debug_inspector (0.0.3)
     diff-lcs (1.3)
@@ -145,7 +145,7 @@ GEM
     jbuilder (2.6.3)
       activesupport (>= 3.0.0, < 5.2)
       multi_json (~> 1.2)
-    jmespath (1.3.1)
+    jmespath (1.4.0)
     jquery-rails (4.3.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -175,7 +175,7 @@ GEM
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
-    momentjs-rails (2.17.1)
+    momentjs-rails (2.20.1)
       railties (>= 3.1)
     multi_json (1.12.1)
     multi_xml (0.6.0)
