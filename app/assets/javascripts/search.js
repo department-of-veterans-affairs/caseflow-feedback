@@ -23,8 +23,10 @@ $(document).ready(function () {
       state.data = $('.data').data('feedback');
       state.table = $('#feedback');
       state.pagination = $('#pagination');
-      processState();
-      render();
+      if (state.data != null && state.data.length !== 0) {
+        processState();
+        render();
+      }
   }
 
   function reevaluate() {
