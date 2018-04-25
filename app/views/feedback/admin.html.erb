@@ -11,7 +11,7 @@
 		      <div role="search">
 		        <%= form_tag search_path, method: :get, class: "usa-search usa-search-small"  do %>
 				  <%= label_tag "search-field", nil, class: "usa-sr-only" %>
-				  <%= search_field_tag "search", nil, id: "search-field", class: 'form-control typeahead' %>
+				  <%= search_field_tag "search", params[:search], id: "search-field", class: 'form-control typeahead' %>
 				  <%= button_tag '', title: "search"%>
 				<% end %>
 		      </div>
