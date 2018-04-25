@@ -12,7 +12,7 @@
 		        <%= form_tag search_path, method: :get, class: "usa-search usa-search-small"  do %>
 				  <%= label_tag "search-field", nil, class: "usa-sr-only" %>
 				  <%= search_field_tag "search", nil, id: "search-field", class: 'form-control typeahead' %>
-				  <%= button_tag ''	%>
+				  <%= button_tag '', title: "search"%>
 				<% end %>
 		      </div>
     		</div>

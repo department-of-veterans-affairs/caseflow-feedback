@@ -55,7 +55,7 @@ gem "pg", platforms: :ruby
 gem "uswds-rails", git: "https://github.com/18F/uswds-rails-gem.git"
 
 group :development, :test do
-  gem 'faker'
+  gem "faker"
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: :ruby
   gem "capybara-screenshot"

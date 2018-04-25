@@ -30,28 +30,21 @@ class FeedbackController < ApplicationController
   end
 
   def search
-    begin 
-      term = params[:search].tr('*','%')
-      term<<'%' unless term.end_with?('%')
-      date_term = transform_date(term.dup) 
-      github_term = term.dup.prepend('%')
-      if !params[:search].blank?
-        @feedback = Feedback.where('contact_email ILIKE ?', term)
-        .or(Feedback.where('subject ILIKE ?', term))
-        .or(Feedback.where('created_at::text ILIKE ?', date_term))
-        .or(Feedback.where('github_url ILIKE ?', github_term))
-        .or(Feedback.where('veteran_pii ILIKE ?', term)).paginate(page: params[:page], per_page: 5)
-      else
-        admin
-      end
-    rescue StandardError => e
-      Rails.logger.error "FeedbackController failed search: #{e.message}"
-      @feedback = Feedback.none.paginate(:page => params[:page]) 
+    term = get_search_term(params[:search])
+    date_term = get_date_term(term.dup)
+    github_term = get_github_term(term.dup)
+    if !params[:search].blank?
+      search_feedback(term, date_term, github_term)
+    else
+      admin
     end
     respond_to do |format|
       format.json { render json: @feedback }
-      format.html { render :admin } 
+      format.html { render :admin }
     end
+  rescue StandardError => e
+    Rails.logger.error "FeedbackController failed search: #{e.message}"
+    @feedback = Feedback.none.paginate(page: params[:page])
   end
 
   private
@@ -62,18 +55,36 @@ class FeedbackController < ApplicationController
       .merge(subject: session[:subject], username: current_user.display_name)
   end
 
-  def transform_date(date)
-    if date.include?('/')
+  def search_feedback(term, date_term, github_term)
+    @feedback = Feedback.where("contact_email ILIKE ?", term)
+      .or(Feedback.where("subject ILIKE ?", term))
+      .or(Feedback.where("created_at::text ILIKE ?", date_term))
+      .or(Feedback.where("github_url ILIKE ?", github_term))
+      .or(Feedback.where("veteran_pii ILIKE ?", term)).paginate(page: params[:page], per_page: 5)
+  end
+
+  def get_search_term(search)
+    term = search.tr("*", "%")
+    term << "%" unless term.end_with?("%")
+  end
+
+  def get_date_term(date)
+    if date.include?("/")
       array = date.split(/\//)
       # Dashboard shows mm/dd/yy, but postgres saves as yyyy-mm-dd in created_at column
-      if array.size == 3 
-        array[2]<<'_' if array[2].length == 1 
-        array.rotate!(-1)  
+      if array.size == 3
+        array[2] << "_" if array[2].length == 1
+        array.rotate!(-1)
       end
-      date = array.join('-')
+      date = array.join("-")
     end
-    date.prepend('%') unless date.start_with?('%')
-    date<<'%' unless date.end_with?('%')
-    date<<'__:__:__.%'
+    date.prepend("%") unless date.start_with?("%")
+    date << "%" unless date.end_with?("%")
+    # created_at time stamp pattern at the end
+    date << "__:__:__.%"
+  end
+
+  def get_github_term(search)
+    search.prepend("%")
   end
 end

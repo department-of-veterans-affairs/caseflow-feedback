@@ -12,7 +12,7 @@ $(document).ready(function () {
     $( "#search-field" ).keyup( function() {
       state.term = this.value;
       state.timers.push(setTimeout(function(){
-        reevaluate()}, TYPEAHEAD_DELAY));
+        reevaluate();}, TYPEAHEAD_DELAY));
     });
   }
 
@@ -72,8 +72,8 @@ $(document).ready(function () {
 
   function render() {
     
-    state.feedback.forEach(function (value, i) {
-      var tr = state.table.append('<tr></tr>');;
+    state.feedback.forEach(function (value) {
+      var tr = state.table.append('<tr></tr>');
        tr.append('<td class="user-col">'+value.user+'</td>');
        tr.append('<td class="date-col">'+value.date+'</td>');
        tr.append('<td class="app-col">'+value.app+'</td>');
@@ -84,13 +84,13 @@ $(document).ready(function () {
   }
 
   function validateData() {
-    if (state.data != null && state.data.length != 0) {
-      state.data_valid = true
+    if (state.data != null && state.data.length !== 0) {
+      state.data_valid = true;
     }
   }
 
   function getFormattedDate(date_string) {
-    var date = new Date(date_string)
+    var date = new Date(date_string);
     var year = date.getFullYear().toString().substr(-2);
 
     var month = (1 + date.getMonth()).toString();
