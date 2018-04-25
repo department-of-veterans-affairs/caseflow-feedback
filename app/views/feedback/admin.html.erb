@@ -1,9 +1,23 @@
+<%= content_tag :div, class: "data", data: {feedback: @feedback} do %>
+<% end %>
 <div class="cf-app-msg-screen cf-app-segment cf-app-segment--alt">
 	<div class="cf-push-left">
-    <h2>Current Feedback</h2>
-  <div class="feedback-paragraph"><span >New feedback submissions today:  </span><span class ="count"><%= @count %></span>
-  </div>
-  </div>
+    	<h2>Current Feedback</h2>
+  		<div class="feedback-paragraph"><span >New feedback submissions today:  </span><span class ="count"><%= @count %></span></div>
+  	</div>
+  	 <div class="cf-push-right">
+	  	<div class="usa-grid">
+		    <div class="usa-width-one-whole">
+		      <div role="search">
+		        <%= form_tag search_path, method: :get, class: "usa-search usa-search-small"  do %>
+				  <%= label_tag "search-field", nil, class: "usa-sr-only" %>
+				  <%= search_field_tag "search", params[:search], id: "search-field", class: 'form-control typeahead' %>
+				  <%= button_tag '', title: "search"%>
+				<% end %>
+		      </div>
+    		</div>
+	  	</div>
+	 </div>
     <table class="usa-table-borderless table-width" summary="Each row represents a feedback">
 	<caption hidden>This table shows all feedback submitted.</caption>
 	<thead>
@@ -17,23 +31,8 @@
 	    </tr>
 	</thead>
 
-	<tbody>
-	    <% @feedback.each do |feedback| %>
-		<tr>
-		    <% if feedback.contact_email.blank? %>
-			<td class="user-col"><%= feedback.username %></td>
-		    <% else %>
-			<td class="user-col"><%= feedback.contact_email %></td>
-		    <% end %>
-		    <td class="date-col"><%= feedback.created_at.strftime("%m/%d/%Y") %></td>
-		    <td class="app-col"><%= feedback.subject %></td>
-		    <td class="feedback-col"><%= feedback.feedback %></td>
-		    <td class="issue-col"><%= link_to feedback.issue_number, feedback.github_url, target: "_blank"%>
-		    <td class="pii-col"><%= feedback.veteran_pii %></td>
-		    </td>
-		</tr>
-	    <% end %>
+	<tbody id="feedback">
 	</tbody>
     </table>
-    <ul><%= will_paginate @feedback =%></ul>
+    <ul id="pagination"><%= will_paginate @feedback =%></ul>
 </div>
