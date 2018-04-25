@@ -30,21 +30,23 @@ class FeedbackController < ApplicationController
   end
 
   def search
-    term = get_search_term(params[:search])
-    date_term = get_date_term(term.dup)
-    github_term = get_github_term(term.dup)
-    if !params[:search].blank?
-      search_feedback(term, date_term, github_term)
-    else
-      admin
+    begin
+      term = get_search_term(params[:search])
+      date_term = get_date_term(term.dup)
+      github_term = get_github_term(term.dup)
+      if !params[:search].blank?
+        search_feedback(term, date_term, github_term)
+      else
+        admin
+      end
+    rescue StandardError => e
+      Rails.logger.error "FeedbackController failed search: #{e.message}"
+      @feedback = Feedback.none.paginate(page: params[:page])
     end
     respond_to do |format|
       format.json { render json: @feedback }
       format.html { render :admin }
     end
-  rescue StandardError => e
-    Rails.logger.error "FeedbackController failed search: #{e.message}"
-    @feedback = Feedback.none.paginate(page: params[:page])
   end
 
   private
@@ -66,6 +68,7 @@ class FeedbackController < ApplicationController
   def get_search_term(search)
     term = search.tr("*", "%")
     term << "%" unless term.end_with?("%")
+    term
   end
 
   def get_date_term(date)
