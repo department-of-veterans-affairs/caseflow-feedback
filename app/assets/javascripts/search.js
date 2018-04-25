@@ -22,6 +22,7 @@ $(document).ready(function () {
       state.data_valid = false;
       state.data = $('.data').data('feedback');
       state.table = $('#feedback');
+      state.pagination = $('#pagination');
       processState();
       render();
   }
@@ -35,6 +36,7 @@ $(document).ready(function () {
   function resetState() {
     state.data = {};
     state.table.empty();
+    state.pagination.empty();
     state.data_valid = false;
     state.feedback = [];
     state.timers.forEach(function (value) {
@@ -65,6 +67,7 @@ $(document).ready(function () {
       state.feedback[i].issue = getIssueNumber(value.github_url);
       state.feedback[i].pii = value.veteran_pii;
     });
+
   }
 
   function render() {
