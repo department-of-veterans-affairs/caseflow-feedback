@@ -16,3 +16,4 @@ puts "Admin records after seeding:  #{new_size}"
 puts
 puts "****************************************************************************************************************************"
 puts "****************************************************************************************************************************"
+# 300.times { |n| Feedback.create(username: Faker::Name.name, contact_email: Faker::Internet.email, subject: Faker::Name.name, feedback: Faker::VForVendetta.speech, github_url: "https://github.com/department-of-veterans-affairs/caseflow-feedback/issues/#{n}", veteran_pii: Faker::Number.number(9)) }
