@@ -55,6 +55,7 @@ gem "pg", platforms: :ruby
 gem "uswds-rails", git: "https://github.com/18F/uswds-rails-gem.git"
 
 group :development, :test do
+  gem "faker"
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: :ruby
   gem "capybara-screenshot"
@@ -87,7 +88,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem "web-console", "~> 2.0", platforms: :ruby
+  gem "web-console", "~> 3.0", platforms: :ruby
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem "spring", platforms: :ruby

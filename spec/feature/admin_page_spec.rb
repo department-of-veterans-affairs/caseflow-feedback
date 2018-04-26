@@ -39,7 +39,7 @@ RSpec.feature "Admin Page " do
     visit "/admin"
     expect(page).to have_link("95")
     expect(page).to have_content("fk@va.gov")
-    expect(page).to have_content(Date.current.strftime("%m/%d/%Y"))
+    expect(page).to have_content(Date.current.strftime("%m/%d/%y"))
     expect(page).to have_content("Caseflow")
     expect(page).to have_content("Admin Page Spec")
     expect(page).to have_content("DSUSER (283)")
