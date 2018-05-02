@@ -234,40 +234,6 @@ dd {
   }
 }
 
-.cf-icon-success--bg {
-  background: image-url('icons/icon-check.svg') bottom no-repeat;
-  background-size: auto 2rem;
-  display: inline-block;
-  height: 3rem;
-  width: 3rem;
-}
-
-//--- Appeal button ---*/
-
-.cf-apppeal-id {
-  box-sizing: border-box;
-  background: $color-white;
-  border: 2px solid $color-gray;
-  color: $color-gray;
-  padding: 1rem;
-
-  &:hover {
-    color: $color-white;
-    background: $color-gray;
-    border-bottom: 2px solid $color-gray;
-
-    path {
-      fill: $color-white;
-    }
-  }
-}
-
-.cf-icon-appeal-id {
-  display: inline-block;
-  margin-left: .25rem;
-  vertical-align: -1px;
-}
-
 //------ Dropdowns --------*/
 .cf-dropdown {
   $large-screen: em(640) !default;
@@ -351,9 +317,6 @@ dd {
     right: .05rem;
   }
 }
-
-//------ Modals --------*/
-
 
 // don't trip the accessibility warning for white on white, even if title isn't visible
 svg title {
@@ -496,54 +459,6 @@ svg title {
   }
 }
 
-
-//-----------------------------------*
-// CSS based on Web Design Guidelines.
-// - Uses Neat.bourbon.io as a grid
-// - Uses patterns and components
-//   from refills.bourbon.io/unstyled/
-//-----------------------------------*/
-
-//===========================
-// Tooltip
-// =========================*/
-
-.cf-tooltip {
-  display: inline-block;
-  position: relative;
-}
-
-.cf-tooltip-trigger {
-  &:hover + .cf-tooltip-text {
-    display: block;
-  }
-}
-
-.cf-tooltip-text {
-  @include transform(translateX(-50%));
-  background: $color-white;
-  box-shadow: 0 0 10px -3px $color-gray;
-  display: none;
-  left: 50%;
-  margin-top: rem(10px);
-  padding: rem(10px);
-  position: absolute;
-  width: rem(300px);
-
-  &::before {
-    @include transform(scaleX(1.2));
-    color: $color-white;
-    content: '\25B2';
-    display: block;
-    font-size: rem(15px);
-    text-align: center;
-    text-shadow: 0 -2px 2px rgba($color-gray, .5);
-    margin-top: rem(-25px);
-    position: relative;
-    z-index: -1;
-  }
-}
-
 //===========================
 // Form controls
 // =========================*/
@@ -597,67 +512,6 @@ form {
 
   &:last-child {
     margin-right: 0;
-  }
-}
-
-// Make a button look like a link */
-.cf-btn-link {
-  background: transparent;
-  color: $color-primary;
-  display: inline-block;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: inherit;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-
-  &:visited {
-    color: $color-primary;
-  }
-
-  // Removes padding, so that these links can be placed inline.
-  &--inline {
-    padding: 0;
-  }
-
-  &:hover {
-    background-color: inherit;
-    color: $color-primary-darker;
-    text-decoration: none;
-  }
-
-  &:hover,
-  &.button-hover {
-    background-color: $color-white;
-    color: $color-primary-darker;
-    text-decoration: underline;
-  }
-
-  &:active,
-  &.button-active {
-    background-color: $color-white;
-    color: $color-primary-darkest;
-    text-decoration: underline;
-  }
-
-  &.usa-button-disabled {
-    color: $color-gray-light;
-  }
-
-  &--confirm {
-    &:visited {
-      color: $color-secondary;
-    }
-
-    color: $color-secondary;
-    font-weight: bold;
-  }
-
-  &--cancel {
-    display: inline-block;
-    font-weight: bold;
-    padding-left: 1rem;
-    padding-right: 1rem;
   }
 }
 

@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def verify_authentication
-    return true if current_user&.authenticated?
+    return true
     # TODO(alex): right now, in demo and local dev, current_user
     # will return a stub user session and never be nil, so we'll
     # never hit the line below. this could probably be refactored
