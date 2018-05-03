@@ -7,8 +7,8 @@ GIT
 
 GIT
   remote: https://github.com/department-of-veterans-affairs/caseflow-commons
-  revision: 8f6e7d02e227a426cbafce574769cd49b220c3bf
-  branch: issue4932
+  revision: e6291950ddac59add73b9fb52ddb3b06c7e028d7
+  ref: e6291950ddac59add73b9fb52ddb3b06c7e028d7
   specs:
     caseflow (0.3.6)
       aws-sdk (~> 2.10)
@@ -72,13 +72,13 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (8.0.0)
     ast (2.3.0)
-    aws-sdk (2.11.33)
-      aws-sdk-resources (= 2.11.33)
-    aws-sdk-core (2.11.33)
+    aws-sdk (2.11.41)
+      aws-sdk-resources (= 2.11.41)
+    aws-sdk-core (2.11.41)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.11.33)
-      aws-sdk-core (= 2.11.33)
+    aws-sdk-resources (2.11.41)
+      aws-sdk-core (= 2.11.41)
     aws-sigv4 (1.0.2)
     bindex (0.5.0)
     bourbon (4.2.7)
