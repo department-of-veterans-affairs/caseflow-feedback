@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/LineLength
 source ENV["GEM_SERVER_URL"] || "https://rubygems.org"
 
-gem "caseflow", git: "https://github.com/department-of-veterans-affairs/caseflow-commons", ref: "5e6830534124f578f43c619c8620c0560365aa55"
+gem "caseflow", git: "https://github.com/department-of-veterans-affairs/caseflow-commons",
+                ref: "e6291950ddac59add73b9fb52ddb3b06c7e028d7"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "5.1.5"
