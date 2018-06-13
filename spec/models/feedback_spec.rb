@@ -11,33 +11,9 @@ RSpec.describe Feedback, type: :model do
   end
 
   context "#feedback" do
-    it "must prevent sensitive leak" do
+    it "allows sensitive information stored" do
       f = feedback.clone
       f[:feedback] = "123456789"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
-      f[:feedback] = "123456789S"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
-      f[:feedback] = "123 45 6789"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
-      f[:feedback] = "123-45-6789"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
-      f[:feedback] = "01234567C"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
-      f[:feedback] = "1234567C"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
-      f[:feedback] = "01234567"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
-      f[:feedback] = "1234567"
-      expect { Feedback.create!(f) }.to raise_error ActiveRecord::RecordInvalid
-      f[:feedback] = "1234567890"
-      expect { Feedback.create!(f) }.not_to raise_error
-      f[:feedback] = "123456"
-      expect { Feedback.create!(f) }.not_to raise_error
-      f[:feedback] = "2022007317"
-      expect { Feedback.create!(f) }.not_to raise_error
-      f[:feedback] = "202-200-7317"
-      expect { Feedback.create!(f) }.not_to raise_error
-      f[:feedback] = "(202) 200-7317"
       expect { Feedback.create!(f) }.not_to raise_error
     end
   end
