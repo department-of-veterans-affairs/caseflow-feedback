@@ -10,7 +10,6 @@ $(document).ready(function () {
     "email":  "Make sure you’ve entered a valid email address below."
   };
   var patternErrorMessages = {
-    "feedback": "Your feedback contains text that looks like personally identifiable information. Please remove the text \"{match}\" in order to submit.",
     "email": "Make sure you’ve entered a valid email address below."
   };
    var errorMessages = {
