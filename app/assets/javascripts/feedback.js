@@ -10,7 +10,6 @@ $(document).ready(function () {
     "email":  "Make sure you’ve entered a valid email address below."
   };
   var patternErrorMessages = {
-    "feedback": "Your feedback contains text that looks like personally identifiable information. Please remove the text \"{match}\" in order to submit.",
     "email": "Make sure you’ve entered a valid email address below."
   };
    var errorMessages = {
@@ -18,7 +17,6 @@ $(document).ready(function () {
     "patternError": patternErrorMessages
   };
   var emailPattern = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
-  var feedbackPattern = /((?:^|[^0-9]|SS )[0-9]{3}[- ]?[0-9]{2}[- ]?[0-9]{4}(?![0-9])S?|(?:^|[^0-9]|C )[0-9]{1,2} ?[0-9]{3} ?[0-9]{3}(?![0-9])C?)/;
 
   function init() {
     initState();
@@ -101,17 +99,10 @@ $(document).ready(function () {
   }
 
   function validatePattern(questionName, questionValue) {
-    switch (questionName) {
-      case "feedback":
-        return !feedbackPattern.test(questionValue);
-      case "email":
-        return emailPattern.test(questionValue);
+    if (questionName === "email") {
+      return emailPattern.test(questionValue);
     }
-  }
-
-  function findOffendingString(questionValue) {
-    var pii = questionValue.match(feedbackPattern);
-    return pii && pii[pii.length-1];
+    return true;
   }
 
   function findErrorType(questionName, questionValue) {
@@ -124,14 +115,7 @@ $(document).ready(function () {
   }
 
   function errorMessage(errorType, questionName) {
-    if(errorType === "patternError" && questionName === "feedback") {
-      var value = questionValue(questionName);
-      var offendingString = findOffendingString(value);
-      return errorMessages[errorType][questionName].replace("{match}", offendingString);
-    }
-    else {
-      return errorMessages[errorType][questionName];
-    }
+    return errorMessages[errorType][questionName];
   }
 
   function validateQuestion(questionName, showError) {
