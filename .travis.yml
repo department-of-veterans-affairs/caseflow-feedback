@@ -36,3 +36,4 @@ notifications:
 
 services:
   - redis-server
+  - postgresql
