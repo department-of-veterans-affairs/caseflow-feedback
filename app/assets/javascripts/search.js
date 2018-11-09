@@ -75,7 +75,7 @@ $(document).ready(function () {
   function render() {
     
     state.feedback.forEach(function (value) {
-      var tr = state.table.insertRow(-1);
+      var tr = state.table.insertRow();
        var userCell = tr.insertCell();
        userCell.innerHTML = '<td class="user-col">'+value.user+'</td>';
        var dateCell = tr.insertCell();
