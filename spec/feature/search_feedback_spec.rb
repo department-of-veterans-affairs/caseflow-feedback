@@ -27,7 +27,7 @@ RSpec.feature "Search feedback" do
     fill_in "search", with: "Subject4"
     click_on "search"
     expect(page).to have_css("tbody#feedback tr", count: 1)
-    fill_in "search", with: "11"
+    fill_in "search", with: "33"
     click_on "search"
     expect(page).to have_css("tbody#feedback tr", count: 1)
     fill_in "search", with: Time.zone.today.strftime("%m/%d")

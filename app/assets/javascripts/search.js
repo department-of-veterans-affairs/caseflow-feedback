@@ -21,7 +21,7 @@ $(document).ready(function () {
       state.timers = [];
       state.data_valid = false;
       state.data = $('.data').data('feedback');
-      state.table = $('#feedback');
+      state.table = document.getElementById("feedback");
       state.pagination = $('#pagination');
       if (state.data != null && state.data.length !== 0) {
         processState();
@@ -75,13 +75,19 @@ $(document).ready(function () {
   function render() {
     
     state.feedback.forEach(function (value) {
-      var tr = state.table.append('<tr></tr>');
-       tr.append('<td class="user-col">'+value.user+'</td>');
-       tr.append('<td class="date-col">'+value.date+'</td>');
-       tr.append('<td class="app-col">'+value.app+'</td>');
-       tr.append('<td class="feedback-col">'+value.feedback+'</td>');
-       tr.append('<td class="issue-col"><a target="_blank" href='+value.github_url+'>'+value.issue+'</a></td>');
-       tr.append('<td class="pii-col">'+value.pii+'</td>');
+      var tr = state.table.insertRow(-1);
+       var userCell = tr.insertCell();
+       userCell.innerHTML = '<td class="user-col">'+value.user+'</td>';
+       var dateCell = tr.insertCell();
+       dateCell.innerHTML = '<td class="date-col">'+value.date+'</td>';
+       var appCell = tr.insertCell();
+       appCell.innerHTML = '<td class="app-col">'+value.app+'</td>';
+       var feedbackCell = tr.insertCell();
+       feedbackCell.innerHTML = '<td class="feedback-col">'+value.feedback+'</td>';
+       var issueCell = tr.insertCell();
+       issueCell.innerHTML = '<td class="issue-col"><a target="_blank" href='+value.github_url+'>'+value.issue+'</a></td>';
+       var piiCell = tr.insertCell();
+       piiCell.innerHTML = '<td class="pii-col">'+value.pii+'</td>';
     }); 
   }
 
