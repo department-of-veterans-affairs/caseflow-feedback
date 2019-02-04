@@ -5,7 +5,7 @@ class Feedback < ApplicationRecord
 
   EMAIL_PATTERN = /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
-  validates :subject, :username, :feedback, :contact_email, presence: true
+  validates :subject, :username, :feedback, :contact_email, :original_url, presence: true
   validates :feedback, length: { maximum: 2000 }
   validates :contact_email, length: { maximum: 255 }, format: { with: EMAIL_PATTERN }
 
@@ -41,7 +41,8 @@ class Feedback < ApplicationRecord
   def render_issue_template
     GithubIssueRenderer.new(username: username,
                             email: contact_email,
-                            details: feedback).render
+                            details: feedback,
+                            original_url: original_url).render
   end
 
   def issue_number
