@@ -9,7 +9,7 @@ RSpec.feature "Enter feedback" do
   end
 
   scenario "Load Feedback page" do
-    visit "/feedback/new"
+    visit "/?subject=Caseflow&original_url=https%3A%2F%2Fappeals.cf.ds.va.gov%2Fqueue%2Fappeals%2F81cee687-820f-430f-8607-197dc9c973db"
     expect(page).to have_content("Tell us about your experience with Caseflow")
     expect(page).to have_content("Add your comments")
     expect(page).to have_content("Your comments will help us improve Caseflow for everyone.")
@@ -24,6 +24,8 @@ RSpec.feature "Enter feedback" do
     expect(Feedback.last.feedback).to eq("Feedback")
     expect(Feedback.last.veteran_pii).to eq("Veteran PII")
     expect(Feedback.last.contact_email).to eq("email@va.gov")
+    expect(Feedback.last.subject).to eq("Caseflow")
+    expect(Feedback.last.original_url).to eq("https://appeals.cf.ds.va.gov/queue/appeals/81cee687-820f-430f-8607-197dc9c973db")
     click_on "Send more feedback"
     expect(page).to have_content("Tell us about your experience with Caseflow")
     fill_in "Add your comments", with: "Feedback Text"
