@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170913161828) do
+ActiveRecord::Schema.define(version: 20190201195654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170913161828) do
     t.text "contact_email"
     t.string "github_url"
     t.text "veteran_pii"
+    t.string "original_url"
   end
 
 end

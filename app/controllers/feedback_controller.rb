@@ -13,6 +13,7 @@ class FeedbackController < ApplicationController
     @feedback = Feedback.new
     session[:subject] = params[:subject] || "Caseflow"
     session[:redirect] = params[:redirect] || "caseflow.ds.va.gov"
+    session[:original_url] = params[:original_url] || "caseflow.ds.va.gov"
   end
 
   def create
@@ -54,7 +55,7 @@ class FeedbackController < ApplicationController
   def feedback_params
     params.require(:feedback)
       .permit(:feedback, :contact_email, :veteran_pii)
-      .merge(subject: session[:subject], username: current_user.display_name)
+      .merge(subject: session[:subject], original_url: session[:original_url], username: current_user.display_name)
   end
 
   def search_feedback(term, date_term, github_term)
