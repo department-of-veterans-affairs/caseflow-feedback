@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :set_raven_user
 
   def unauthorized
-    render status: 403
+    render status: :forbidden
   end
 
   def logout
@@ -20,11 +20,13 @@ class ApplicationController < ActionController::Base
 
   def setup_fakes
     return unless Rails.env.development? || Rails.env.test? || Rails.env.demo?
+
     Fakes::Initializer.development!
   end
 
   def verify_authentication
     return true if current_user&.authenticated?
+
     # TODO(alex): right now, in demo and local dev, current_user
     # will return a stub user session and never be nil, so we'll
     # never hit the line below. this could probably be refactored
