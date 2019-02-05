@@ -1,15 +1,18 @@
 AllCops:
-  TargetRubyVersion: 2.3
-  TargetRailsVersion: 4.2
-  Include:
-    - '**/config.ru'
-    - '**/Rakefile'
-    - '**/*.rake'
   Exclude:
-    - 'db/**/*'
+    - 'db/migrate/*'
+    - 'db/schema.rb'
     - 'config/**/*'
     - 'script/**/*'
     - 'vendor/**/*'
+    - './.simplecov'
+    - 'client/node_modules/**/*'
+  TargetRailsVersion: 5.1
+  UseCache: true
+
+Bundler/OrderedGems:
+  Enabled: true
+  TreatCommentsAsGroupSeparators: false
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
@@ -66,6 +69,8 @@ Rails/Present:
 
 Metrics/MethodLength:
   Max: 20
+  Exclude:
+    - "spec/**/*"
 
 Metrics/ClassLength:
   Max: 400
@@ -108,6 +113,9 @@ Style/TernaryParentheses:
 
 Style/IfUnlessModifier:
   Enabled: false
+
+Style/RedundantBegin:
+  Enabled: true
 
 Naming/FileName:
   Enabled: false

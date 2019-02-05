@@ -3,7 +3,7 @@
 class Feedback < ApplicationRecord
   include ApplicationHelper
 
-  EMAIL_PATTERN = /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+  EMAIL_PATTERN = /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/.freeze
 
   validates :subject, :username, :feedback, :contact_email, :original_url, presence: true
   validates :feedback, length: { maximum: 2000 }
@@ -55,7 +55,7 @@ class Feedback < ApplicationRecord
     url = github.create_issue(title: title,
                               body: render_issue_template,
                               labels: github_labels)
-    update_attributes(github_url: url)
+    update(github_url: url)
   end
 
   def github
