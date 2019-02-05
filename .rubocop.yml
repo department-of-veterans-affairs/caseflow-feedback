@@ -18,7 +18,7 @@ Style/StringLiterals:
   EnforcedStyle: double_quotes
 
 Style/FrozenStringLiteralComment:
-  Enabled: false
+  Enabled: always
 
 Style/Documentation:
   Enabled: false
@@ -115,7 +115,7 @@ Style/IfUnlessModifier:
   Enabled: false
 
 Style/RedundantBegin:
-  Enabled: false
+  Enabled: true
 
 Naming/FileName:
   Enabled: false
