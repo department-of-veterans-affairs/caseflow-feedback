@@ -3,8 +3,17 @@
 require "rails_helper"
 
 RSpec.describe Feedback, type: :model do
-  let(:feedback_no_email) { { subject: "eFolder Express", username: "alf", feedback: "gr8 app" } }
-  let(:feedback) { { subject: "eFolder Express", username: "alf", feedback: "gr8 app", contact_email: "fk@va.gov" } }
+  let(:feedback_no_email) do
+    { subject: "eFolder Express", username: "alf", feedback: "gr8 app",
+      original_url: "caseflow.ds.va.gov/application/123456789" }
+  end
+  let(:feedback_no_url) do
+    { subject: "eFolder Express", username: "alf", feedback: "gr8 app", contact_email: "fk@va.gov" }
+  end
+  let(:feedback) do
+    { subject: "eFolder Express", username: "alf", feedback: "gr8 app", contact_email: "fk@va.gov",
+      original_url: "caseflow.ds.va.gov/application/123456789" }
+  end
 
   after do
     Feedback.delete_all
@@ -34,6 +43,12 @@ RSpec.describe Feedback, type: :model do
     end
   end
 
+  context "#original_url" do
+    it "is required" do
+      expect { Feedback.create!(feedback_no_url) }.to raise_error ActiveRecord::RecordInvalid
+    end
+  end
+
   context "callbacks" do
     it "should update github url after feedback is created" do
       expect(Feedback.create(feedback).github_url).to_not eq nil
@@ -47,6 +62,7 @@ RSpec.describe Feedback, type: :model do
       expect(result).to match(/alf/)
       expect(result).to match(/test@example.com/)
       expect(result).not_to match(/gr8 app/)
+      expect(result).to match(/caseflow.ds.va.gov\/application\/123456789/)
     end
   end
 
