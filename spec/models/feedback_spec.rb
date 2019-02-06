@@ -3,11 +3,17 @@
 require "rails_helper"
 
 RSpec.describe Feedback, type: :model do
-  let(:feedback_no_email) { { subject: "eFolder Express", username: "alf", feedback: "gr8 app",
-      original_url: "caseflow.ds.va.gov/application/123456789"} }
-  let(:feedback_no_url) { { subject: "eFolder Express", username: "alf", feedback: "gr8 app", contact_email: "fk@va.gov" } }
-  let(:feedback) { { subject: "eFolder Express", username: "alf", feedback: "gr8 app", contact_email: "fk@va.gov",
-    original_url: "caseflow.ds.va.gov/application/123456789" } }
+  let(:feedback_no_email) do
+    { subject: "eFolder Express", username: "alf", feedback: "gr8 app",
+      original_url: "caseflow.ds.va.gov/application/123456789" }
+  end
+  let(:feedback_no_url) do
+    { subject: "eFolder Express", username: "alf", feedback: "gr8 app", contact_email: "fk@va.gov" }
+  end
+  let(:feedback) do
+    { subject: "eFolder Express", username: "alf", feedback: "gr8 app", contact_email: "fk@va.gov",
+      original_url: "caseflow.ds.va.gov/application/123456789" }
+  end
 
   after do
     Feedback.delete_all
