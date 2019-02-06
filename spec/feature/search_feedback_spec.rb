@@ -10,6 +10,7 @@ RSpec.feature "Search feedback" do
       Feedback.create(username: "#{Faker::Name.name}#{n}",
                       contact_email: "email#{n}@va.gov",
                       subject: "Subject#{n}",
+                      original_url: "caseflow.ds.va.gov/application/123456789",
                       feedback: Faker::Name.name,
                       veteran_pii: "#{n}#{n}#{Faker::Number.number(7)}")
     end
