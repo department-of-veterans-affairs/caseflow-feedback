@@ -24,7 +24,7 @@ gem "prometheus-client"
 # Discussion: https://github.com/18F/college-choice/issues/597#issuecomment-139034834
 gem "puma", "~> 2.16.0"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "5.1.6.1"
+gem "rails"
 gem "rails_stdout_logging"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
