@@ -12,7 +12,7 @@ gem "jbuilder", "~> 2.0"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem "therubyracer", platforms: :ruby
 # Use jquery as the JavaScript library
-gem "jquery-rails"
+gem "jquery-rails", ">= 4.3.4"
 # Github API
 gem "octokit", "~> 4.0"
 gem "pg", platforms: :ruby
