@@ -12,7 +12,7 @@ gem "jbuilder", "~> 2.0"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem "therubyracer", platforms: :ruby
 # Use jquery as the JavaScript library
-gem "jquery-rails"
+gem "jquery-rails", ">= 4.3.1"
 # Github API
 gem "octokit", "~> 4.0"
 gem "pg", platforms: :ruby
@@ -23,11 +23,11 @@ gem "prometheus-client"
 # Puma was chosen because it handles load of 40+ concurrent users better than Unicorn and Passenger
 # Discussion: https://github.com/18F/college-choice/issues/597#issuecomment-139034834
 gem "puma", "~> 2.16.0"
-# Bundle edge Rails instead: gem "rails", github: "rails/rails"
+# Bundle edge Rails instead: gem "rails", ">= 5.1.6.2", github: "rails/rails"
 gem "rails"
 gem "rails_stdout_logging"
 # Use SCSS for stylesheets
-gem "sass-rails", "~> 5.0"
+gem "sass-rails", "~> 5.0", ">= 5.0.6"
 # bundle exec rake doc:rails generates the API under doc/api.
 gem "sdoc", "~> 0.4.0", group: :doc
 # Error reporting to Sentry
@@ -48,9 +48,9 @@ group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: :ruby
   # Testing tools
-  gem "capybara"
-  gem "capybara-screenshot"
-  gem "dotenv-rails"
+  gem "capybara", ">= 2.13.0"
+  gem "capybara-screenshot", ">= 1.0.14"
+  gem "dotenv-rails", ">= 2.2.1"
   gem "faker"
   gem "guard-rspec"
   # Linters
@@ -61,7 +61,7 @@ group :development, :test do
   gem "rainbow"
   gem "rb-readline"
   gem "rspec"
-  gem "rspec-rails"
+  gem "rspec-rails", ">= 3.5.2"
   gem "rubocop", "~> 0.63.1", require: false
   gem "scss_lint", require: false
   gem "simplecov"
@@ -75,5 +75,5 @@ group :development do
   # POSIX systems should have this already, so we"re not going to bring it in on other platforms
   gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem "web-console", "~> 3.0", platforms: :ruby
+  gem "web-console", "~> 3.6", ">= 3.6.1", platforms: :ruby
 end
